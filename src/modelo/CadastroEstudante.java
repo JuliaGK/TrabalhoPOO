@@ -4,46 +4,48 @@ import java.sql.Date;
 
 public class CadastroEstudante {
 	
-	private String cpfEstudante;
-	private String nomeEstudante;
+	//ARRUMAR: logradEstudante existe no banco, mas não no formulário
+	// rgEstudante existe no formulário, mas não no banco.
+	
+	private String cpfEstudante; //cpfEstudanteFormulario` VARCHAR(11) NULL
+	private String nomeEstudante; //nomeEstudanteFormulario` VARCHAR(100) NULL
 	private String rgEstudante;
-	private String enderecoEtudante;
-	private String bairroEstudante;
-	private String cidadeEstudante;
-	private int cursoEstudante; //JComboBox
-	private int semestEstudante; //JComboBox
-	private Date dataNascEstudante; 
-	private String complemEstudante;
-	private String cepEstudante;
-	private String ufEstudante; //JComboBox
-	private String matricEstudante;
+	private String logradEstudante; //logradouroEstudanteFormulario` VARCHAR(45) NULL
+	private String enderecoEtudante; //enderecoEstudanteFormulario` VARCHAR(100) NULL
+	private String bairroEstudante; // bairroEstudanteFormulario` VARCHAR(45) NULL
+	private String cidadeEstudante; //cidadeEstudanteFormulario` VARCHAR(100) NULL
+	private int cursoEstudante; //JComboBox //idCursoEstudante` INT NOT NULL
+	private int semestEstudante; //JComboBox //semestreEstudanteFormulario` INT NULL
+	private Date dataNascEstudante; //nascimentoEstudanteFormulario` DATE NULL
+	private String complemEstudante; // complementoEstudanteFormulario` VARCHAR(45) NULL
+	private String cepEstudante; //cepEstudanteFormulario` VARCHAR(45) NULL
+	private String ufEstudante; //JComboBox //ufEstudanteFormulario` VARCHAR(45) NULL
+	private String matricEstudante; //matriculaEstudanteFormulario` VARCHAR(45) NULL
 	
-	private String nomeCoord;
-	private String cpfCoord;
-	private String rgCoord;
-	private int cursoCoord; //JComboBox
+	private String nomeCoord; //nomeProfessorFormulario` VARCHAR(100) NULL,
+	private String cpfCoord; //cpfProfessorFormulario` VARCHAR(11) NULL
+	private String rgCoord; //rgProfessorFormulario` VARCHAR(45) NULL
+	private int cursoCoord; //JComboBox //idCursoCoordenador` INT NOT NULL
 	
-	private String nomeResp;
-	private String cpfResp;
-	private String rgResp;
-	private String cargoResp;
+	private String nomeResp; //nomeResponsavelFormulario` VARCHAR(100) NULL
+	private String cpfResp; //cpfResponsavelFormulario` VARCHAR(11) NULL
+	private String rgResp; //rgResponsavelFormulario` VARCHAR(45) NULL
+	private String cargoResp; //cargoResponsavelFormulario` VARCHAR(45) NULL
 	
-	private String areaAtuacaoEstagio;
-	private Date dataInicialEstagio;
-	private String cargaHorariaEstagio;
-	private String numApoliceSeguroEstagio;
-	private String duracaoEstagio;
-	private Date dataFinalEstagio;
-	private String seguradoraEstagio;
-	private String numSiapeEstagio;
-	private String cargoSupervEstagio;
-	private String atividadesEstagio;
+	private String areaAtuacaoEstagio; //areaEstagioFormulario` VARCHAR(45) NULL
+	private Date dataInicialEstagio; // inicioEstagioFormulario` DATE NULL
+	private String cargaHorariaEstagio; //cargaHorarioEstagioFormulario` VARCHAR(10) NULL
+	private String numApoliceSeguroEstagio; //numeroApoliceEstagioFormulario` VARCHAR(45) NULL
+	private String duracaoEstagio; //tempoEstagioFormulario` VARCHAR(45) NULL
+	private Date dataFinalEstagio; //finalEstagioFormulario` DATE NULL
+	private String seguradoraEstagio; //seguradorEstagioFormulario` VARCHAR(45) NULL
+	private String supervEstagio; //supervisaoEstagioFormulario` VARCHAR(100) NULL
+	private String orientadorEstagio;//orientadorEstagioFormulario` VARCHAR(100) NULL
+	private String numSiapeEstagio;//siapSupervisorFormulario` VARCHAR(45) NULL
+	private String cargoSupervEstagio; //cargoOrientadorEstagioFormulario` VARCHAR(45) NULL
+	private String atividadesEstagio; //atividadesEstagioFormulario` TEXT NULL
 	
-	private Date dataPreenchimento;
-	
-	//PanelLogin
-	private String usuarioLogin;
-	private String senhaLogin;
+	private Date dataPreenchimento; //dataPreenchimentoFormulario` DATE NULL
 	
 	public CadastroEstudante() {}
 	
@@ -88,8 +90,7 @@ public class CadastroEstudante {
 		this.cargoSupervEstagio = cargoSupervEstagio;
 		this.atividadesEstagio = atividadesEstagio;
 		this.dataPreenchimento = dataPreenchimento;
-		this.usuarioLogin = usuarioLogin;
-		this.senhaLogin = senhaLogin;
+
 	}
 	public String getCpfEstudante() {
 		return cpfEstudante;
@@ -282,18 +283,6 @@ public class CadastroEstudante {
 	}
 	public void setDataPreenchimento(Date dataPreenchimento) {
 		this.dataPreenchimento = dataPreenchimento;
-	}
-	public String getUsuarioLogin() {
-		return usuarioLogin;
-	}
-	public void setUsuarioLogin(String usuarioLogin) {
-		this.usuarioLogin = usuarioLogin;
-	}
-	public String getSenhaLogin() {
-		return senhaLogin;
-	}
-	public void setSenhaLogin(String senhaLogin) {
-		this.senhaLogin = senhaLogin;
 	}
 	
 	
