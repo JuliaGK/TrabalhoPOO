@@ -1,15 +1,18 @@
 package modelo;
 
+import java.sql.Date;
+
 public class CadastroEstudante {
+	
 	private String cpfEstudante;
 	private String nomeEstudante;
 	private String rgEstudante;
 	private String enderecoEtudante;
 	private String bairroEstudante;
 	private String cidadeEstudante;
-	private String cursoEstudante; //JComboBox
-	private String semestEstudante; //JComboBox
-	private String dataNascEstudante; 
+	private int cursoEstudante; //JComboBox
+	private int semestEstudante; //JComboBox
+	private Date dataNascEstudante; 
 	private String complemEstudante;
 	private String cepEstudante;
 	private String ufEstudante; //JComboBox
@@ -18,7 +21,7 @@ public class CadastroEstudante {
 	private String nomeCoord;
 	private String cpfCoord;
 	private String rgCoord;
-	private String cursoCoord; //JComboBox
+	private int cursoCoord; //JComboBox
 	
 	private String nomeResp;
 	private String cpfResp;
@@ -26,30 +29,32 @@ public class CadastroEstudante {
 	private String cargoResp;
 	
 	private String areaAtuacaoEstagio;
-	private String dataInicialEstagio;
+	private Date dataInicialEstagio;
 	private String cargaHorariaEstagio;
 	private String numApoliceSeguroEstagio;
 	private String duracaoEstagio;
-	private String dataFinalEstagio;
+	private Date dataFinalEstagio;
 	private String seguradoraEstagio;
 	private String numSiapeEstagio;
 	private String cargoSupervEstagio;
 	private String atividadesEstagio;
 	
+	private Date dataPreenchimento;
+	
 	//PanelLogin
 	private String usuarioLogin;
 	private String senhaLogin;
 	
+	public CadastroEstudante() {}
 	
 	public CadastroEstudante(String cpfEstudante, String nomeEstudante, String rgEstudante, String enderecoEtudante,
-			String bairroEstudante, String cidadeEstudante, String cursoEstudante, String semestEstudante,
-			String dataNascEstudante, String complemEstudante, String cepEstudante, String ufEstudante,
-			String matricEstudante, String nomeCoord, String cpfCoord, String rgCoord, String cursoCoord,
-			String nomeResp, String cpfResp, String rgResp, String cargoResp, String areaAtuacaoEstagio,
-			String dataInicialEstagio, String cargaHorariaEstagio, String numApoliceSeguroEstagio,
-			String duracaoEstagio, String dataFinalEstagio, String seguradoraEstagio, String numSiapeEstagio,
-			String cargoSupervEstagio, String atividadesEstagio, String usuarioLogin, String senhaLogin) {
-		
+			String bairroEstudante, String cidadeEstudante, int cursoEstudante, int semestEstudante,
+			Date dataNascEstudante, String complemEstudante, String cepEstudante, String ufEstudante,
+			String matricEstudante, String nomeCoord, String cpfCoord, String rgCoord, int cursoCoord, String nomeResp,
+			String cpfResp, String rgResp, String cargoResp, String areaAtuacaoEstagio, Date dataInicialEstagio,
+			String cargaHorariaEstagio, String numApoliceSeguroEstagio, String duracaoEstagio, Date dataFinalEstagio,
+			String seguradoraEstagio, String numSiapeEstagio, String cargoSupervEstagio, String atividadesEstagio,
+			Date dataPreenchimento, String usuarioLogin, String senhaLogin) {
 		super();
 		this.cpfEstudante = cpfEstudante;
 		this.nomeEstudante = nomeEstudante;
@@ -82,11 +87,10 @@ public class CadastroEstudante {
 		this.numSiapeEstagio = numSiapeEstagio;
 		this.cargoSupervEstagio = cargoSupervEstagio;
 		this.atividadesEstagio = atividadesEstagio;
+		this.dataPreenchimento = dataPreenchimento;
 		this.usuarioLogin = usuarioLogin;
 		this.senhaLogin = senhaLogin;
 	}
-	
-	
 	public String getCpfEstudante() {
 		return cpfEstudante;
 	}
@@ -123,22 +127,22 @@ public class CadastroEstudante {
 	public void setCidadeEstudante(String cidadeEstudante) {
 		this.cidadeEstudante = cidadeEstudante;
 	}
-	public String getCursoEstudante() {
+	public int getCursoEstudante() {
 		return cursoEstudante;
 	}
-	public void setCursoEstudante(String cursoEstudante) {
+	public void setCursoEstudante(int cursoEstudante) {
 		this.cursoEstudante = cursoEstudante;
 	}
-	public String getSemestEstudante() {
+	public int getSemestEstudante() {
 		return semestEstudante;
 	}
-	public void setSemestEstudante(String semestEstudante) {
+	public void setSemestEstudante(int semestEstudante) {
 		this.semestEstudante = semestEstudante;
 	}
-	public String getDataNascEstudante() {
+	public Date getDataNascEstudante() {
 		return dataNascEstudante;
 	}
-	public void setDataNascEstudante(String dataNascEstudante) {
+	public void setDataNascEstudante(Date dataNascEstudante) {
 		this.dataNascEstudante = dataNascEstudante;
 	}
 	public String getComplemEstudante() {
@@ -183,10 +187,10 @@ public class CadastroEstudante {
 	public void setRgCoord(String rgCoord) {
 		this.rgCoord = rgCoord;
 	}
-	public String getCursoCoord() {
+	public int getCursoCoord() {
 		return cursoCoord;
 	}
-	public void setCursoCoord(String cursoCoord) {
+	public void setCursoCoord(int cursoCoord) {
 		this.cursoCoord = cursoCoord;
 	}
 	public String getNomeResp() {
@@ -219,10 +223,10 @@ public class CadastroEstudante {
 	public void setAreaAtuacaoEstagio(String areaAtuacaoEstagio) {
 		this.areaAtuacaoEstagio = areaAtuacaoEstagio;
 	}
-	public String getDataInicialEstagio() {
+	public Date getDataInicialEstagio() {
 		return dataInicialEstagio;
 	}
-	public void setDataInicialEstagio(String dataInicialEstagio) {
+	public void setDataInicialEstagio(Date dataInicialEstagio) {
 		this.dataInicialEstagio = dataInicialEstagio;
 	}
 	public String getCargaHorariaEstagio() {
@@ -243,10 +247,10 @@ public class CadastroEstudante {
 	public void setDuracaoEstagio(String duracaoEstagio) {
 		this.duracaoEstagio = duracaoEstagio;
 	}
-	public String getDataFinalEstagio() {
+	public Date getDataFinalEstagio() {
 		return dataFinalEstagio;
 	}
-	public void setDataFinalEstagio(String dataFinalEstagio) {
+	public void setDataFinalEstagio(Date dataFinalEstagio) {
 		this.dataFinalEstagio = dataFinalEstagio;
 	}
 	public String getSeguradoraEstagio() {
@@ -273,6 +277,12 @@ public class CadastroEstudante {
 	public void setAtividadesEstagio(String atividadesEstagio) {
 		this.atividadesEstagio = atividadesEstagio;
 	}
+	public Date getDataPreenchimento() {
+		return dataPreenchimento;
+	}
+	public void setDataPreenchimento(Date dataPreenchimento) {
+		this.dataPreenchimento = dataPreenchimento;
+	}
 	public String getUsuarioLogin() {
 		return usuarioLogin;
 	}
@@ -285,5 +295,7 @@ public class CadastroEstudante {
 	public void setSenhaLogin(String senhaLogin) {
 		this.senhaLogin = senhaLogin;
 	}
+	
+	
 }
 
