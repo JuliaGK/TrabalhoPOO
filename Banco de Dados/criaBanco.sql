@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Formularios` (
   `rgResponsavelFormulario` VARCHAR(45) NULL,
   `cpfResponsavelFormulario` VARCHAR(11) NULL,
   `nomeEstudanteFormulario` VARCHAR(100) NULL,
-  `nascimentoEstudanteFormulario` VARCHAR(10) NULL,
+  `nascimentoEstudanteFormulario` DATE NULL,
   `cpfEstudanteFormulario` VARCHAR(11) NULL,
   `rgEstudanteFormulario` VARCHAR(45) NULL,
   `logradouroEstudanteFormulario` VARCHAR(45) NULL,
