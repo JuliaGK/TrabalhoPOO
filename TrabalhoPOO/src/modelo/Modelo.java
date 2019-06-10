@@ -12,7 +12,7 @@ public class CadastroEstudante {
 	private String dataNascEstudante; 
 	private String complemEstudante;
 	private String cepEstudante;
-	private String ufEstudante;
+	private String ufEstudante; //JComboBox
 	private String matricEstudante;
 	
 	private String nomeCoord;
