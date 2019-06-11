@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import modelo.CadastroEstudante;
 
@@ -167,6 +168,39 @@ public class Dao {
 		}
 		
 		return form;
+	}
+	
+	public LinkedList<String> retornarTodosCursos() {
+		LinkedList<String> cursos = new LinkedList<>();
+		
+		Connection con =  ConexaoMySQL.getConexao();
+		
+		String sql = "SELECT nomeCurso FROM cursos";
+		
+		try {
+			PreparedStatement prep = con.prepareStatement(sql);
+			
+			ResultSet rs = prep.executeQuery();
+			
+			while(rs.next()) {
+				cursos.add(rs.getString(1));
+			}
+			
+			return cursos;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return cursos;
 	}
 
 }
