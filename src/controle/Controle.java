@@ -4,6 +4,9 @@ package controle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
+import dao.Dao;
 import modelo.LoginSenha;
 import visao.FramePrincipal;
 import visao.PanelAtualizar;
@@ -24,6 +27,8 @@ public class Controle implements ActionListener {
 	private PanelNovoF panelNovo;
 
 	private LoginSenha loginSenha = new LoginSenha();
+	
+	private Dao dao;
 	
 	public Controle() {
 
@@ -52,9 +57,13 @@ public class Controle implements ActionListener {
 				
 			}
 			if(e.getActionCommand().equals("LOGIN")) {
-				
+							
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
 				loginSenha.setSenha(panelLogin.getFieldSenha().getText());
+				
+				if(!dao.loginEhValido(loginSenha.getLogin(),loginSenha.getSenha())) {
+					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!","Erro",JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}
 			
