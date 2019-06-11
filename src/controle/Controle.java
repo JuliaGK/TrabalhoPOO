@@ -306,8 +306,49 @@ public class Controle implements ActionListener {
 				
 				panelBuscar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
 				
-				System.out.println(cadastroEstudante.toString());
 				
+			}
+			
+			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
+				
+				panelBuscar.getFieldCPFBusca().setText("");
+				
+				panelBuscar.getFieldNomeCoord().setText("");
+				panelBuscar.getFieldNomeResp().setText("");
+				panelBuscar.getFieldNomeEst().setText("");
+				panelBuscar.getFieldCargoResp().setText("");
+				panelBuscar.getFieldEndereco().setText("");
+				panelBuscar.getFieldComplemento().setText("");
+				panelBuscar.getFieldBairro().setText("");
+				panelBuscar.getFieldCidade().setText("");
+				panelBuscar.getFieldAreaAtuacao().setText("");
+				panelBuscar.getFieldDuracaoEstag().setText("");
+				panelBuscar.getFieldCHSem().setText("");
+				panelBuscar.getFieldNApolSeg().setText("");
+				panelBuscar.getFieldSeguradora().setText("");
+				panelBuscar.getFieldProfResp().setText("");
+				panelBuscar.getFieldSIAPE().setText("");
+				panelBuscar.getFieldSupervidorEmpresa().setText("");
+				panelBuscar.getFieldCargoSupervEmpresa().setText("");
+				panelBuscar.getComboBoxSemestre().setSelectedIndex(0);
+				panelBuscar.getComboBoxCursoEst().setSelectedIndex(0);
+				panelBuscar.getComboBoxUF().setSelectedIndex(0);
+				panelBuscar.getComboBoxCursoCoord().setSelectedIndex(0);
+				
+				panelBuscar.getFieldDataInicial().setText("");
+				panelBuscar.getFieldDataFinal().setText("");
+				panelBuscar.getFieldCEP().setText("");
+				panelBuscar.getFieldCPFEst().setText("");
+				panelBuscar.getFieldRGEst().setText("");
+				panelBuscar.getFieldNascEst().setText("");
+				panelBuscar.getFieldCPFResp().setText("");
+				panelBuscar.getFieldRGResp().setText("");
+				panelBuscar.getFieldMatEst().setText("");
+				panelBuscar.getFieldCPFCoord().setText("");
+				panelBuscar.getFieldRGCoord().setText("");
+				panelBuscar.getFieldCPFBusca().setText("");
+				
+				panelBuscar.getTextArea().setText("");
 			}
 		}
 
