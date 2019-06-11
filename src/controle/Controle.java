@@ -4,6 +4,7 @@ package controle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.LoginSenha;
 import visao.FramePrincipal;
 import visao.PanelAtualizar;
 import visao.PanelBuscar;
@@ -22,6 +23,8 @@ public class Controle implements ActionListener {
 	private PanelMenu panelMenu;
 	private PanelNovoF panelNovo;
 
+	private LoginSenha loginSenha = new LoginSenha();
+	
 	public Controle() {
 
 		framePrincipal = new FramePrincipal();
@@ -48,7 +51,12 @@ public class Controle implements ActionListener {
 				panelLogin.getFieldUsuario().setText("");
 				
 			}
-			
+			if(e.getActionCommand().equals("LOGIN")) {
+				
+				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
+				loginSenha.setSenha(panelLogin.getFieldSenha().getText());
+				
+			}
 			
 		}
 	
