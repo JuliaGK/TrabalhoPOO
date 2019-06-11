@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import modelo.CadastroCurso;
 import modelo.CadastroEstudante;
 
 public class Dao {
@@ -201,6 +202,32 @@ public class Dao {
 		}
 		
 		return cursos;
+	}
+	
+	public void cadastraCurso(CadastroCurso curso) {
+		
+		Connection con =  ConexaoMySQL.getConexao();
+		
+		String sql = "INSERT INTO cursos VALUES (null,?,?)";
+		
+		try {
+			PreparedStatement prep = con.prepareStatement(sql);
+			prep.setString(1, curso.getNomeCurso());
+			prep.setString(2, curso.getObservCurso());
+			
+			prep.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
