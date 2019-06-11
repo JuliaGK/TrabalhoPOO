@@ -61,7 +61,32 @@ public class Controle implements ActionListener {
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
 				loginSenha.setSenha(panelLogin.getFieldSenha().getText());
 				
-				if(!dao.loginEhValido(loginSenha.getLogin(),loginSenha.getSenha())) {
+				//implementar loginEhValido em dao
+				
+				if(dao.loginEhValido(loginSenha.getLogin(),loginSenha.getSenha())) {
+					
+					
+					// de alguma forma conecta com o panel de menu
+					
+					if(e.getActionCommand().equals("Novo Formul\u00E1rio")) {
+						
+						//abre novoF
+						
+					}else if(e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
+						
+						//abre atualizar
+						
+					}else if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
+						
+						//abre buscar
+						
+					}else if(e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
+						
+						//abre excluir
+						
+					}					
+					
+				}else {
 					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!","Erro",JOptionPane.ERROR_MESSAGE);
 				}
 				
