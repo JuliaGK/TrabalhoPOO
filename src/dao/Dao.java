@@ -68,5 +68,34 @@ public class Dao {
 		}
 		
 	}
+	
+	public void excluirFormulario(String cpfAluno) {
+		
+		Connection con = ConexaoMySQL.getConexao();
+		
+		String sql = "DELETE FROM formularios WHERE cpfEstudanteFormulario LIKE ?";
+		
+		try {
+			PreparedStatement prep = con.prepareStatement(sql);
+			
+			prep.setString(1, cpfAluno);
+			
+			prep.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 
 }
