@@ -104,6 +104,10 @@ public class Controle implements ActionListener {
 					}else if(e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
 						
 						//Da acesso ao panel para excluir
+						framePrincipal.setContentPane(panelExcluir);
+
+						panelExcluir.getBtnExcluir().addActionListener(this);
+						panelExcluir.getBtnLimpar().addActionListener(this);
 						
 					}					
 					
