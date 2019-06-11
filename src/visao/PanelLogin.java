@@ -40,6 +40,7 @@ public class PanelLogin extends JPanel {
 		JLabel labelImagemLogin = new JLabel("");
 		labelImagemLogin.setBounds(127, 26, 115, 115);
 		add(labelImagemLogin);
+
 		try {
 			labelImagemLogin.setIcon(new ImageIcon(
 					ImageIO.read(PanelLogin.class.getResource("/imagens/logoUfcspa.png")).getScaledInstance(
