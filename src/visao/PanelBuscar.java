@@ -57,7 +57,7 @@ public class PanelBuscar extends JPanel {
 	private JFormattedTextField FieldDataFinal;
 	private JComboBox comboBoxSemestre;
 	private JFormattedTextField FieldMatEst;
-	private JComboBox comboBoxCursoEst;
+	private JComboBox<String> comboBoxCursoEst;
 	private JComboBox comboBoxUF;
 	private JFormattedTextField FieldCEP;
 	private JFormattedTextField FieldCPFEst;
@@ -65,7 +65,7 @@ public class PanelBuscar extends JPanel {
 	private JFormattedTextField FieldNascEst;
 	private JFormattedTextField FieldCPFResp;
 	private JFormattedTextField FieldRGResp;
-	private JComboBox comboBoxCursoCoord;
+	private JComboBox<String> comboBoxCursoCoord;
 	private JFormattedTextField FieldCPFCoord;
 	private JFormattedTextField FieldRGCoord;
 	private JButton btnBuscar;
@@ -706,11 +706,11 @@ public class PanelBuscar extends JPanel {
 		FieldMatEst = fieldMatEst;
 	}
 
-	public JComboBox getComboBoxCursoEst() {
+	public JComboBox<String> getComboBoxCursoEst() {
 		return comboBoxCursoEst;
 	}
 
-	public void setComboBoxCursoEst(JComboBox comboBoxCursoEst) {
+	public void setComboBoxCursoEst(JComboBox<String> comboBoxCursoEst) {
 		this.comboBoxCursoEst = comboBoxCursoEst;
 	}
 
@@ -770,11 +770,11 @@ public class PanelBuscar extends JPanel {
 		FieldRGResp = fieldRGResp;
 	}
 
-	public JComboBox getComboBoxCursoCoord() {
+	public JComboBox<String> getComboBoxCursoCoord() {
 		return comboBoxCursoCoord;
 	}
 
-	public void setComboBoxCursoCoord(JComboBox comboBoxCursoCoord) {
+	public void setComboBoxCursoCoord(JComboBox<String> comboBoxCursoCoord) {
 		this.comboBoxCursoCoord = comboBoxCursoCoord;
 	}
 

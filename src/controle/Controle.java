@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
@@ -33,131 +34,132 @@ public class Controle implements ActionListener {
 	private PanelLogin panelLogin = new PanelLogin();
 	private PanelMenu panelMenu;
 	private PanelNovoF panelNovo;
+	private LinkedList<String> listaCursos;
 
 	private LoginSenha loginSenha = new LoginSenha();
 	private CadastroEstudante cadastroEstudante = new CadastroEstudante();
-	
+
 	private Dao dao;
-	
+
 	public Controle() {
 
 		framePrincipal = new FramePrincipal();
 		framePrincipal.setVisible(true);
-		
+
 		// Inicia com o panel de login
-		
+
 		framePrincipal.setContentPane(panelLogin);
 		framePrincipal.setSize(panelLogin.getWidth(), panelLogin.getHeight());
-		
+
 		panelLogin.getBtnLogin().addActionListener(this);
 		panelLogin.getBtnLimpar().addActionListener(this);
-		
+
+		dao = new Dao();
+		listaCursos = dao.retornarTodosCursos();
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 // 		+++ Funcionalidades do Panel Login
-		
-		if(framePrincipal.getContentPane() == panelLogin){
-			
+
+		if (framePrincipal.getContentPane() == panelLogin) {
+
 //			* Bot„o limpar
-			if(e.getActionCommand().equals("LIMPAR")){
-				
+			if (e.getActionCommand().equals("LIMPAR")) {
+
 				panelLogin.getFieldSenha().setText("");
 				panelLogin.getFieldUsuario().setText("");
-				
+
 			}
-			
+
 //			* Bot„o login
-			if(e.getActionCommand().equals("LOGIN")) {
-							
+			if (e.getActionCommand().equals("LOGIN")) {
+
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
 				loginSenha.setSenha(panelLogin.getFieldSenha().getText());
-				
-//============>> implementar loginEhValido em dao
-				// Se o login for valido
-					
-				if(dao.validarLogin(loginSenha)) {
-					
-					//Da acesso ao panel de menu
-					framePrincipal.setContentPane(panelMenu);
-					
+
+				if (dao.validarLogin(loginSenha)) {
+
+					// Da acesso ao panel de menu
+					panelMenu = new PanelMenu();
+
 					panelMenu.getMntmNovoFormulrio().addActionListener(this);
 					panelMenu.getMntmAtualizarFormulrio().addActionListener(this);
 					panelMenu.getMntmBuscarFormulrio().addActionListener(this);
 					panelMenu.getMntmExcluirFormulrio().addActionListener(this);
+
+					framePrincipal.setContentPane(panelMenu);
+					framePrincipal.setSize(framePrincipal.getWidth() + 1, framePrincipal.getHeight() + 1);
 				} else {
-					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!","Erro",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}
-			
 
-		
 //		+++ Funcionalidades Panel Menu
-		if(framePrincipal.getContentPane() == panelMenu){
+		if (framePrincipal.getContentPane() == panelMenu) {
 
 //			* Bot„o Novo Formul·rio
-			if(e.getActionCommand().equals("Novo Formul\u00E1rio")) {
-							
-				//Da acesso ao panel para novo formulario
+			if (e.getActionCommand().equals("Novo Formul\u00E1rio")) {
+				panelNovo = new PanelNovoF();
+				// Da acesso ao panel para novo formulario
 				framePrincipal.setContentPane(panelNovo);
-				framePrincipal.setSize(panelNovo.getWidth(), panelNovo.getHeight());
-				addCursosComboBox(panelNovo.getComboBoxCursoCoord(), dao.retornarTodosCursos());
-				addCursosComboBox(panelNovo.getComboBoxCursoEst(), dao.retornarTodosCursos());
-							
+				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+
+				addCursosComboBox(panelNovo.getComboBoxCursoCoord(), listaCursos);
+				addCursosComboBox(panelNovo.getComboBoxCursoEst(), listaCursos);
+
 				panelNovo.getBtnCadastrar().addActionListener(this);
 				panelNovo.getBtnLimpar().addActionListener(this);
-							
-				
-														
+
 			}
 
 // 			* Bot„o Atualizar Formul·rio
-			if(e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
-							
-				//Da acesso ao panel para atualizar
+			if (e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
+				panelAtualizar = new PanelAtualizar();
+				// Da acesso ao panel para atualizar
 				framePrincipal.setContentPane(panelAtualizar);
-				framePrincipal.setSize(panelAtualizar.getWidth(), panelAtualizar.getHeight());
-							
+				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+				addCursosComboBox(panelAtualizar.getComboBoxCursoCoord(), listaCursos);
+				addCursosComboBox(panelAtualizar.getComboBoxCursoEst(), listaCursos);
+
 				panelAtualizar.getBtnAtualizar().addActionListener(this);
 				panelAtualizar.getBtnBuscar().addActionListener(this);
 				panelAtualizar.getBtnLimpar().addActionListener(this);
-//=========================> o que √© esse limpar atual?
 				panelAtualizar.getBtnLimparAtual().addActionListener(this);
 			}
 //			* Bot„o Buscar Formul·rio
-			if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
-							
-				//Da acesso ao panel para buscar
+			if (e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
+				panelBuscar = new PanelBuscar();
+				// Da acesso ao panel para buscar
 				framePrincipal.setContentPane(panelBuscar);
-				framePrincipal.setSize(panelBuscar.getWidth(), panelBuscar.getHeight());
+				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+				addCursosComboBox(panelBuscar.getComboBoxCursoCoord(), listaCursos);
+				addCursosComboBox(panelBuscar.getComboBoxCursoEst(), listaCursos);
 
 				panelBuscar.getBtnBuscar().addActionListener(this);
-				panelBuscar.getBtnLimpar().addActionListener(this);				
+				panelBuscar.getBtnLimpar().addActionListener(this);
 			}
 //			* Bot„o Excluir Formul·rio
-			if(e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
-							
-				//Da acesso ao panel para excluir
+			if (e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
+				panelExcluir = new PanelExcluir();
+				// Da acesso ao panel para excluir
 				framePrincipal.setContentPane(panelExcluir);
-				framePrincipal.setSize(panelExcluir.getWidth(), panelExcluir.getHeight());
+				framePrincipal.setSize(360, 180);
 
 				panelExcluir.getBtnExcluir().addActionListener(this);
 				panelExcluir.getBtnLimpar().addActionListener(this);
-							
+
 			}
-				
+
 		}
-		
-		
-// 		+++ Funcionalidades Panel Novo Formul·rio		
-		if(framePrincipal.getContentPane() == panelNovo) {
-			
-//			* Bot„o Limpar 
-			if(e.getActionCommand().equals("LIMPAR")){
-									
+
+		if (framePrincipal.getContentPane() == panelNovo) {
+			if (e.getActionCommand().equalsIgnoreCase("LIMPAR")) {
+
 				panelNovo.getFieldNomeCoord().setText("");
 				panelNovo.getFieldNomeResp().setText("");
 				panelNovo.getFieldNomeEst().setText("");
@@ -175,10 +177,11 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldSIAPE().setText("");
 				panelNovo.getFieldSupervidorEmpresa().setText("");
 				panelNovo.getFieldCargoSupervEmpresa().setText("");
-				panelNovo.getComboBoxSemestre().getItemAt(0);
-				panelNovo.getComboBoxCursoEst().getItemAt(0);
-				panelNovo.getComboBoxUF().getItemAt(0);
-				panelNovo.getComboBoxCursoCoord().getItemAt(0);
+				panelNovo.getComboBoxSemestre().setSelectedIndex(0);
+				panelNovo.getComboBoxCursoEst().setSelectedIndex(0);
+				panelNovo.getComboBoxUF().setSelectedIndex(0);
+				panelNovo.getComboBoxCursoCoord().setSelectedIndex(0);
+				;
 				panelNovo.getFieldDataInicial().setText("");
 				panelNovo.getFieldDataFinal().setText("");
 				panelNovo.getFieldCEP().setText("");
@@ -192,9 +195,10 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldRGCoord().setText("");
 				panelNovo.getFieldCPFBusca().setText("");
 			}
-//			* Bot„o cadastrar					
-			if(e.getActionCommand().equals("CADASTRAR")) {
-									
+
+			if (e.getActionCommand().equals("CADASTRAR")) {
+				System.out.println("CADASTRA");
+
 				cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
 				cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
 				cadastroEstudante.setNomeEstudante(panelNovo.getFieldNomeEst().getText());
@@ -208,7 +212,7 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setCargaHorariaEstagio(panelNovo.getFieldCHSem().getText());
 				cadastroEstudante.setNumApoliceSeguroEstagio(panelNovo.getFieldNApolSeg().getText());
 				cadastroEstudante.setSeguradoraEstagio(panelNovo.getFieldSeguradora().getText());
-				cadastroEstudante.setCargoResp(panelNovo.getFieldProfResp().getText());		
+				cadastroEstudante.setCargoResp(panelNovo.getFieldProfResp().getText());
 				cadastroEstudante.setNumSiapeEstagio(panelNovo.getFieldSIAPE().getText());
 				cadastroEstudante.setSupervEstagio(panelNovo.getFieldSupervidorEmpresa().getText());
 				cadastroEstudante.setCargoSupervEstagio(panelNovo.getFieldCargoSupervEmpresa().getText());
@@ -220,33 +224,33 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setMatricEstudante(panelNovo.getFieldMatEst().getText());
 				cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
 				cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
-									
-//==========================> ver as convers√µes de data aqui
-				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());;
+
+				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());
+				;
 				cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
 				cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
-								
-				cadastroEstudante.setSemestEstudante(Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
+
+				cadastroEstudante.setSemestEstudante(
+						Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
 				cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
 
-//==========================> ver as convers√µes de aqui	
-				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedItem().toString());								
-				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedItem().toString());
-									
-//==========================> fun√ß√£o que cadastra no banco	
-				}
-								
-		}											
-					
-	}
-	
-	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
-		
-		box.addItem("");
-		while(!cursos.isEmpty()) {
-			box.addItem(cursos.pop());
+				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
+				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
+
+				dao.registrarFormulario(cadastroEstudante);
+
+			}
 		}
-	
-}
+
+	}
+
+	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
+
+		box.addItem("");
+		for (int i = 1; i < cursos.size(); i++) {
+			box.addItem(cursos.get(i));
+		}
+
+	}
 
 }
