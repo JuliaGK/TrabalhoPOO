@@ -439,6 +439,48 @@ public class PanelBuscar extends JPanel {
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(PanelBuscar.class.getResource("/imagens/close-button.png")));
 		add(btnLimpar, "cell 1 5");
+		
+		comboBoxUF.addItem("Selecionar Opção");
+		comboBoxUF.addItem("Acre");
+		comboBoxUF.addItem("Amapá");
+		comboBoxUF.addItem("Amazonas");
+		comboBoxUF.addItem("Bahia");
+		comboBoxUF.addItem("Ceará");
+		comboBoxUF.addItem("Distrito Federal");
+		comboBoxUF.addItem("Espírito Santo");
+		comboBoxUF.addItem("Goiás");
+		comboBoxUF.addItem("Maranhão");
+		comboBoxUF.addItem("Mato Grosso");
+		comboBoxUF.addItem("Mato Grosso do Sul");
+		comboBoxUF.addItem("Minas Gerais");
+		comboBoxUF.addItem("Pará");
+		comboBoxUF.addItem("Paraíba");
+		comboBoxUF.addItem("Paraná");
+		comboBoxUF.addItem("Pernambuco");
+		comboBoxUF.addItem("Piauí");
+		comboBoxUF.addItem("Rio de Janeiro");
+		comboBoxUF.addItem("Rio Grande do Norte");
+		comboBoxUF.addItem("Rio Grande do Sul");
+		comboBoxUF.addItem("Rondônia");
+		comboBoxUF.addItem("Roraima");
+		comboBoxUF.addItem("Santa Catarina");
+		comboBoxUF.addItem("São Paulo");
+		comboBoxUF.addItem("Sergipe");
+		comboBoxUF.addItem("Tocantins");
+		
+		comboBoxSemestre.addItem("Selecionar Opção");
+		comboBoxSemestre.addItem("1");
+		comboBoxSemestre.addItem("2");
+		comboBoxSemestre.addItem("3");
+		comboBoxSemestre.addItem("4");
+		comboBoxSemestre.addItem("5");
+		comboBoxSemestre.addItem("6");
+		comboBoxSemestre.addItem("7");
+		comboBoxSemestre.addItem("8");
+		comboBoxSemestre.addItem("9");
+		comboBoxSemestre.addItem("10");
+		comboBoxSemestre.addItem("11");
+		comboBoxSemestre.addItem("12");
 
 	}
 
