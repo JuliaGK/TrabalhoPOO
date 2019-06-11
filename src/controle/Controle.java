@@ -252,7 +252,39 @@ public class Controle implements ActionListener {
 //			*Botão que limpa os dados existentes no formulário			
 			Object comando = e.getSource();
 			if(comando.equals(panelAtualizar.getBtnLimparAtual())) {
-							
+				panelNovo.getFieldNomeCoord().setText("");
+				panelNovo.getFieldNomeResp().setText("");
+				panelNovo.getFieldNomeEst().setText("");
+				panelNovo.getFieldCargoResp().setText("");
+				panelNovo.getFieldEndereco().setText("");
+				panelNovo.getFieldComplemento().setText("");
+				panelNovo.getFieldBairro().setText("");
+				panelNovo.getFieldCidade().setText("");
+				panelNovo.getFieldAreaAtuacao().setText("");
+				panelNovo.getFieldDuracaoEstag().setText("");
+				panelNovo.getFieldCHSem().setText("");
+				panelNovo.getFieldNApolSeg().setText("");
+				panelNovo.getFieldSeguradora().setText("");
+				panelNovo.getFieldProfResp().setText("");
+				panelNovo.getFieldSIAPE().setText("");
+				panelNovo.getFieldSupervidorEmpresa().setText("");
+				panelNovo.getFieldCargoSupervEmpresa().setText("");
+				panelNovo.getComboBoxSemestre().setSelectedIndex(0);
+				panelNovo.getComboBoxCursoEst().setSelectedIndex(0);
+				panelNovo.getComboBoxUF().setSelectedIndex(0);
+				panelNovo.getComboBoxCursoCoord().setSelectedIndex(0);
+				panelNovo.getFieldDataInicial().setText("");
+				panelNovo.getFieldDataFinal().setText("");
+				panelNovo.getFieldCEP().setText("");
+				panelNovo.getFieldCPFEst().setText("");
+				panelNovo.getFieldRGEst().setText("");
+				panelNovo.getFieldNascEst().setText("");
+				panelNovo.getFieldCPFResp().setText("");
+				panelNovo.getFieldRGResp().setText("");
+				panelNovo.getFieldMatEst().setText("");
+				panelNovo.getFieldCPFCoord().setText("");
+				panelNovo.getFieldRGCoord().setText("");
+				panelNovo.getTextArea().setText("");			
 			}
 //			*Botão que limpa a area de pesquisa
 			if(comando.equals(panelAtualizar.getBtnLimpar())){
