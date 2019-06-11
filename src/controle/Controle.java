@@ -76,6 +76,10 @@ public class Controle implements ActionListener {
 					if(e.getActionCommand().equals("Novo Formul\u00E1rio")) {
 						
 						//Da acesso ao panel para novo formulario
+						framePrincipal.setContentPane(panelNovo);
+						
+						panelNovo.getBtnCadastrar().addActionListener(this);
+						panelNovo.getBtnLimpar().addActionListener(this);
 						
 						
 						
