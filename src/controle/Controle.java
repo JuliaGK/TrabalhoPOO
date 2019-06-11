@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import dao.Dao;
+import modelo.CadastroEstudante;
 import modelo.LoginSenha;
 import visao.FramePrincipal;
 import visao.PanelAtualizar;
@@ -33,6 +34,7 @@ public class Controle implements ActionListener {
 	private PanelNovoF panelNovo;
 
 	private LoginSenha loginSenha = new LoginSenha();
+	private CadastroEstudante cadastroEstudante = new CadastroEstudante();
 	
 	private Dao dao;
 	
@@ -130,40 +132,45 @@ public class Controle implements ActionListener {
 									
 								}else if(e.getActionCommand().equals("CADASTRAR")) {
 									
-									panelNovo.getFieldNomeCoord();
-									panelNovo.getFieldNomeResp();
-									panelNovo.getFieldNomeEst();
-									panelNovo.getFieldCargoResp();
-									panelNovo.getFieldEndereco();
-									panelNovo.getFieldComplemento();
-									panelNovo.getFieldBairro();
-									panelNovo.getFieldCidade();
-									panelNovo.getFieldAreaAtuacao();
-									panelNovo.getFieldDuracaoEstag();
-									panelNovo.getFieldCHSem();
-									panelNovo.getFieldNApolSeg();
-									panelNovo.getFieldSeguradora();
-									panelNovo.getFieldProfResp();
-									panelNovo.getFieldSIAPE();
-									panelNovo.getFieldSupervidorEmpresa();
-									panelNovo.getFieldCargoSupervEmpresa();
-									panelNovo.getComboBoxSemestre();
-									panelNovo.getComboBoxCursoEst();
-									panelNovo.getComboBoxUF();
-									panelNovo.getComboBoxCursoCoord();
-									panelNovo.getFieldDataInicial();
-									panelNovo.getFieldDataFinal();
-									panelNovo.getFieldCEP();
-									panelNovo.getFieldCPFEst();
-									panelNovo.getFieldRGEst();
-									panelNovo.getFieldNascEst();
-									panelNovo.getFieldCPFResp();
-									panelNovo.getFieldRGResp();
-									panelNovo.getFieldMatEst();
-									panelNovo.getFieldCPFCoord();
-									panelNovo.getFieldRGCoord();
-									panelNovo.getFieldCPFBusca();
+									cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
+									cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
+									cadastroEstudante.setNomeEstudante(panelNovo.getFieldNomeEst().getText());
+									cadastroEstudante.setCargoResp(panelNovo.getFieldCargoResp().getText());
+									cadastroEstudante.setEnderecoEtudante(panelNovo.getFieldEndereco().getText());
+									cadastroEstudante.setComplemEstudante(panelNovo.getFieldComplemento().getText());
+									cadastroEstudante.setBairroEstudante(panelNovo.getFieldBairro().getText());
+									cadastroEstudante.setCidadeEstudante(panelNovo.getFieldCidade().getText());
+									cadastroEstudante.setAreaAtuacaoEstagio(panelNovo.getFieldAreaAtuacao().getText());
+									cadastroEstudante.setDuracaoEstagio(panelNovo.getFieldDuracaoEstag().getText());
+									cadastroEstudante.setCargaHorariaEstagio(panelNovo.getFieldCHSem().getText());
+									cadastroEstudante.setNumApoliceSeguroEstagio(panelNovo.getFieldNApolSeg().getText());
+									cadastroEstudante.setSeguradoraEstagio(panelNovo.getFieldSeguradora().getText());
+									cadastroEstudante.setCargoResp(panelNovo.getFieldProfResp().getText());		
+									cadastroEstudante.setNumSiapeEstagio(panelNovo.getFieldSIAPE().getText());
+									cadastroEstudante.setSupervEstagio(panelNovo.getFieldSupervidorEmpresa().getText());
+									cadastroEstudante.setCargoSupervEstagio(panelNovo.getFieldCargoSupervEmpresa().getText());
+									cadastroEstudante.setCepEstudante(panelNovo.getFieldCEP().getText());
+									cadastroEstudante.setCpfEstudante(panelNovo.getFieldCPFEst().getText());
+									cadastroEstudante.setRgEstudante(panelNovo.getFieldRGEst().getText());
+									cadastroEstudante.setCpfResp(panelNovo.getFieldCPFResp().getText());
+									cadastroEstudante.setRgResp(panelNovo.getFieldRGResp().getText());
+									cadastroEstudante.setMatricEstudante(panelNovo.getFieldMatEst().getText());
+									cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
+									cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
 									
+//==========================> ver as conversões de data aqui
+									cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());;
+									cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
+									cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
+								
+									cadastroEstudante.setSemestEstudante(Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
+									cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
+
+//==========================> ver as conversões de aqui	
+									cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedItem().toString());								
+									cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedItem().toString());
+									
+//==========================> função que cadastra no banco	
 								}
 								
 							}
@@ -177,6 +184,7 @@ public class Controle implements ActionListener {
 							panelAtualizar.getBtnAtualizar().addActionListener(this);
 							panelAtualizar.getBtnBuscar().addActionListener(this);
 							panelAtualizar.getBtnLimpar().addActionListener(this);
+//=========================> o que é esse limpar atual?
 							panelAtualizar.getBtnLimparAtual().addActionListener(this);
 							
 						}else if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
