@@ -155,10 +155,11 @@ public class Controle implements ActionListener {
 			}
 
 		}
-
+		
+//		+++ Funcionalidades Panel de cadastro (novo)
 		if (framePrincipal.getContentPane() == panelNovo) {
+//			*Botão Limpar Formulário
 			if (e.getActionCommand().equalsIgnoreCase("LIMPAR")) {
-
 				panelNovo.getFieldNomeCoord().setText("");
 				panelNovo.getFieldNomeResp().setText("");
 				panelNovo.getFieldNomeEst().setText("");
@@ -180,7 +181,6 @@ public class Controle implements ActionListener {
 				panelNovo.getComboBoxCursoEst().setSelectedIndex(0);
 				panelNovo.getComboBoxUF().setSelectedIndex(0);
 				panelNovo.getComboBoxCursoCoord().setSelectedIndex(0);
-				
 				panelNovo.getFieldDataInicial().setText("");
 				panelNovo.getFieldDataFinal().setText("");
 				panelNovo.getFieldCEP().setText("");
@@ -193,13 +193,10 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldCPFCoord().setText("");
 				panelNovo.getFieldRGCoord().setText("");
 				panelNovo.getFieldCPFBusca().setText("");
-				
 				panelNovo.getTextArea().setText("");
-				
 			}
-
+//			*Botão cadastrar novo formulário
 			if (e.getActionCommand().equalsIgnoreCase("CADASTRAR")) {
-				
 				cadastroEstudante = new CadastroEstudante();
 				cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
 				cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
@@ -226,50 +223,47 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setMatricEstudante(panelNovo.getFieldMatEst().getText());
 				cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
 				cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
-
 				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());	
 				cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
 				cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
-
 				cadastroEstudante.setSemestEstudante(
 						Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
-				
 				cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
 				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
 				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
-				
 				cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
 				Calendar cal = Calendar.getInstance();
 				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
 				
 				dao.registrarFormulario(cadastroEstudante);
-
 			}
 		}
 		
-		
+//		+++Funcionalidades do painel de atualização
 		if(framePrincipal.getContentPane() == panelAtualizar) {
-			if(e.getActionCommand().equals("Atualizar")) {
+//			*Botão que atualiza cadastro
+			if(e.getActionCommand().equalsIgnoreCase("Atualizar")) {
 				
 			}
-			
-			if(e.getActionCommand().equals("Buscar")) {
+//			*Botão que busca um cadastro no banco			
+			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
 				
-			}
-			
+			}			
+//			*Botão que limpa os dados existentes no formulário			
 			Object comando = e.getSource();
 			if(comando.equals(panelAtualizar.getBtnLimparAtual())) {
-				//limpa os campos do formulário
-				
+							
 			}
+//			*Botão que limpa a area de pesquisa
 			if(comando.equals(panelAtualizar.getBtnLimpar())){
-				//limpa o campo de busca
+				
 			}
 			
 		}
 		
-		
+//		+++Funcionalidades do painel de busca		
 		if(framePrincipal.getContentPane() == panelBuscar) {
+//			*Botão buscar cadastro			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
 				cadastroEstudante = new CadastroEstudante();
 				cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
@@ -310,10 +304,8 @@ public class Controle implements ActionListener {
 				panelBuscar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
 				
 				panelBuscar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
-				
-				
 			}
-			
+//			*Botão limpar área do formulário			
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
 				
 				panelBuscar.getFieldCPFBusca().setText("");
@@ -357,10 +349,13 @@ public class Controle implements ActionListener {
 			}
 		}
 				
+//		+++Funcionalidade do painel de exclusão		
 		if(framePrincipal.getContentPane() == panelExcluir) {
+//			*Botão excluir
 			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
 				dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
 			}
+//			*Botão limpar busca
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
 				panelExcluir.getFormattedTextField().setText("");
 			}
