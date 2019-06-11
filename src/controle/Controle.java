@@ -256,7 +256,7 @@ public class Controle implements ActionListener {
 			}
 //			*Botão que limpa a area de pesquisa
 			if(comando.equals(panelAtualizar.getBtnLimpar())){
-				
+				panelNovo.getFieldCPFBusca().setText("");
 			}
 			
 		}
