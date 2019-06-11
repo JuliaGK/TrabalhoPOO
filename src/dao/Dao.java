@@ -58,6 +58,7 @@ public class Dao {
 			prep.setString(35, form.getDataPreenchimento());
 			
 			prep.executeUpdate();
+			System.out.println("Cadastro efetuado");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

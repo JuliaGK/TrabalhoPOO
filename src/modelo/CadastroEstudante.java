@@ -369,6 +369,24 @@ public class CadastroEstudante {
 	public void setDataPreenchimento(String dataPreenchimento) {
 		this.dataPreenchimento = dataPreenchimento;
 	}
+
+	@Override
+	public String toString() {
+		return "CadastroEstudante [cpfEstudante=" + cpfEstudante + ", nomeEstudante=" + nomeEstudante + ", rgEstudante="
+				+ rgEstudante + ", logradEstudante=" + logradEstudante + ", enderecoEtudante=" + enderecoEtudante
+				+ ", bairroEstudante=" + bairroEstudante + ", cidadeEstudante=" + cidadeEstudante + ", cursoEstudante="
+				+ cursoEstudante + ", semestEstudante=" + semestEstudante + ", dataNascEstudante=" + dataNascEstudante
+				+ ", complemEstudante=" + complemEstudante + ", cepEstudante=" + cepEstudante + ", ufEstudante="
+				+ ufEstudante + ", matricEstudante=" + matricEstudante + ", nomeCoord=" + nomeCoord + ", cpfCoord="
+				+ cpfCoord + ", rgCoord=" + rgCoord + ", cursoCoord=" + cursoCoord + ", nomeResp=" + nomeResp
+				+ ", cpfResp=" + cpfResp + ", rgResp=" + rgResp + ", cargoResp=" + cargoResp + ", areaAtuacaoEstagio="
+				+ areaAtuacaoEstagio + ", dataInicialEstagio=" + dataInicialEstagio + ", cargaHorariaEstagio="
+				+ cargaHorariaEstagio + ", numApoliceSeguroEstagio=" + numApoliceSeguroEstagio + ", duracaoEstagio="
+				+ duracaoEstagio + ", dataFinalEstagio=" + dataFinalEstagio + ", seguradoraEstagio=" + seguradoraEstagio
+				+ ", supervEstagio=" + supervEstagio + ", orientadorEstagio=" + orientadorEstagio + ", numSiapeEstagio="
+				+ numSiapeEstagio + ", cargoSupervEstagio=" + cargoSupervEstagio + ", atividadesEstagio="
+				+ atividadesEstagio + ", dataPreenchimento=" + dataPreenchimento + "]";
+	}
 	
 	
 }

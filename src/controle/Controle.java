@@ -3,6 +3,7 @@ package controle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -37,7 +38,7 @@ public class Controle implements ActionListener {
 	private LinkedList<String> listaCursos;
 
 	private LoginSenha loginSenha = new LoginSenha();
-	private CadastroEstudante cadastroEstudante = new CadastroEstudante();
+	private CadastroEstudante cadastroEstudante;
 
 	private Dao dao;
 
@@ -181,7 +182,7 @@ public class Controle implements ActionListener {
 				panelNovo.getComboBoxCursoEst().setSelectedIndex(0);
 				panelNovo.getComboBoxUF().setSelectedIndex(0);
 				panelNovo.getComboBoxCursoCoord().setSelectedIndex(0);
-				;
+				
 				panelNovo.getFieldDataInicial().setText("");
 				panelNovo.getFieldDataFinal().setText("");
 				panelNovo.getFieldCEP().setText("");
@@ -194,11 +195,14 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldCPFCoord().setText("");
 				panelNovo.getFieldRGCoord().setText("");
 				panelNovo.getFieldCPFBusca().setText("");
+				
+				panelNovo.getTextArea().setText("");
+				
 			}
 
-			if (e.getActionCommand().equals("CADASTRAR")) {
+			if (e.getActionCommand().equalsIgnoreCase("CADASTRAR")) {
 				System.out.println("CADASTRA");
-
+				cadastroEstudante = new CadastroEstudante();
 				cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
 				cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
 				cadastroEstudante.setNomeEstudante(panelNovo.getFieldNomeEst().getText());
@@ -212,7 +216,7 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setCargaHorariaEstagio(panelNovo.getFieldCHSem().getText());
 				cadastroEstudante.setNumApoliceSeguroEstagio(panelNovo.getFieldNApolSeg().getText());
 				cadastroEstudante.setSeguradoraEstagio(panelNovo.getFieldSeguradora().getText());
-				cadastroEstudante.setCargoResp(panelNovo.getFieldProfResp().getText());
+				cadastroEstudante.setOrientadorEstagio(panelNovo.getFieldProfResp().getText());
 				cadastroEstudante.setNumSiapeEstagio(panelNovo.getFieldSIAPE().getText());
 				cadastroEstudante.setSupervEstagio(panelNovo.getFieldSupervidorEmpresa().getText());
 				cadastroEstudante.setCargoSupervEstagio(panelNovo.getFieldCargoSupervEmpresa().getText());
@@ -226,7 +230,7 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
 
 				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());
-				;
+				
 				cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
 				cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
 
@@ -236,7 +240,13 @@ public class Controle implements ActionListener {
 
 				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
 				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
-
+				
+				cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
+				
+				Calendar cal = Calendar.getInstance();
+				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
+				
+				System.out.println(cadastroEstudante.toString());
 				dao.registrarFormulario(cadastroEstudante);
 
 			}
