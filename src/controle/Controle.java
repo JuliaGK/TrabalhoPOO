@@ -86,6 +86,12 @@ public class Controle implements ActionListener {
 					}else if(e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
 						
 						//Da acesso ao panel para atualizar
+						framePrincipal.setContentPane(panelAtualizar);
+						
+						panelAtualizar.getBtnAtualizar().addActionListener(this);
+						panelAtualizar.getBtnBuscar().addActionListener(this);
+						panelAtualizar.getBtnLimpar().addActionListener(this);
+						panelAtualizar.getBtnLimparAtual().addActionListener(this);
 						
 					}else if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 						
