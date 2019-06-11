@@ -54,7 +54,7 @@ public class PanelNovoF extends JPanel {
 	private JFormattedTextField FieldDataFinal;
 	private JComboBox comboBoxSemestre;
 	private JFormattedTextField FieldMatEst;
-	private JComboBox comboBoxCursoEst;
+	private JComboBox<String> comboBoxCursoEst;
 	private JComboBox comboBoxUF;
 	private JFormattedTextField FieldCEP;
 	private JFormattedTextField FieldCPFEst;
@@ -62,7 +62,7 @@ public class PanelNovoF extends JPanel {
 	private JFormattedTextField FieldNascEst;
 	private JFormattedTextField FieldCPFResp;
 	private JFormattedTextField FieldRGResp;
-	private JComboBox comboBoxCursoCoord;
+	private JComboBox<String> comboBoxCursoCoord;
 	private JFormattedTextField FieldCPFCoord;
 	private JFormattedTextField FieldRGCoord;
 	private JButton btnCadastrar;
@@ -125,25 +125,8 @@ public class PanelNovoF extends JPanel {
 		lblCursoCoord.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblCursoCoord, "cell 3 5");
 
-		comboBoxCursoCoord = new JComboBox();
+		comboBoxCursoCoord = new JComboBox<String>();
 		add(comboBoxCursoCoord, "cell 4 5");
-		comboBoxCursoCoord.addItem("Selecionar Opção");
-		comboBoxCursoCoord.addItem("Biomedicina Diurno");
-		comboBoxCursoCoord.addItem("Biomedicina Noturno");
-		comboBoxCursoCoord.addItem("Enfermagem");
-		comboBoxCursoCoord.addItem("Farmácia");
-		comboBoxCursoCoord.addItem("Física Médica");
-		comboBoxCursoCoord.addItem("Fisioterapia");
-		comboBoxCursoCoord.addItem("Fonoaudiologia");
-		comboBoxCursoCoord.addItem("Gastronomia");
-		comboBoxCursoCoord.addItem("Gestão em Saúde");
-		comboBoxCursoCoord.addItem("Informática Biomédica");
-		comboBoxCursoCoord.addItem("Medicina");
-		comboBoxCursoCoord.addItem("Nutrição");
-		comboBoxCursoCoord.addItem("Psicologia");
-		comboBoxCursoCoord.addItem("Química Medicinal");
-		comboBoxCursoCoord.addItem("Tecnologia em Alimentos");
-		comboBoxCursoCoord.addItem("Toxicologia Analítica");
 
 		JLabel lblDadosConcedente = new JLabel("DADOS DA UNIDADE CONCEDENTE DE EST\u00C1GIO");
 		lblDadosConcedente.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -332,25 +315,8 @@ public class PanelNovoF extends JPanel {
 			e.printStackTrace();
 		}
 
-		comboBoxCursoEst = new JComboBox();
+		comboBoxCursoEst = new JComboBox<String>();
 		add(comboBoxCursoEst, "cell 1 17");
-		comboBoxCursoEst.addItem("Selecionar Opção");
-		comboBoxCursoEst.addItem("Biomedicina Diurno");
-		comboBoxCursoEst.addItem("Biomedicina Noturno");
-		comboBoxCursoEst.addItem("Enfermagem");
-		comboBoxCursoEst.addItem("Farmácia");
-		comboBoxCursoEst.addItem("Física Médica");
-		comboBoxCursoEst.addItem("Fisioterapia");
-		comboBoxCursoEst.addItem("Fonoaudiologia");
-		comboBoxCursoEst.addItem("Gastronomia");
-		comboBoxCursoEst.addItem("Gestão em Saúde");
-		comboBoxCursoEst.addItem("Informática Biomédica");
-		comboBoxCursoEst.addItem("Medicina");
-		comboBoxCursoEst.addItem("Nutrição");
-		comboBoxCursoEst.addItem("Psicologia");
-		comboBoxCursoEst.addItem("Química Medicinal");
-		comboBoxCursoEst.addItem("Tecnologia em Alimentos");
-		comboBoxCursoEst.addItem("Toxicologia Analítica");
 
 		JLabel lblMatricula = new JLabel("Matr\u00EDcula Estudante");
 		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -753,11 +719,11 @@ public class PanelNovoF extends JPanel {
 		FieldMatEst = fieldMatEst;
 	}
 
-	public JComboBox getComboBoxCursoEst() {
+	public JComboBox<String> getComboBoxCursoEst() {
 		return comboBoxCursoEst;
 	}
 
-	public void setComboBoxCursoEst(JComboBox comboBoxCursoEst) {
+	public void setComboBoxCursoEst(JComboBox<String> comboBoxCursoEst) {
 		this.comboBoxCursoEst = comboBoxCursoEst;
 	}
 
@@ -817,11 +783,11 @@ public class PanelNovoF extends JPanel {
 		FieldRGResp = fieldRGResp;
 	}
 
-	public JComboBox getComboBoxCursoCoord() {
+	public JComboBox<String> getComboBoxCursoCoord() {
 		return comboBoxCursoCoord;
 	}
 
-	public void setComboBoxCursoCoord(JComboBox comboBoxCursoCoord) {
+	public void setComboBoxCursoCoord(JComboBox<String> comboBoxCursoCoord) {
 		this.comboBoxCursoCoord = comboBoxCursoCoord;
 	}
 

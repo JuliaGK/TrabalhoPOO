@@ -3,6 +3,7 @@ package controle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -88,6 +89,8 @@ public class Controle implements ActionListener {
 							//Da acesso ao panel para novo formulario
 							framePrincipal.setContentPane(panelNovo);
 							framePrincipal.setSize(panelNovo.getWidth(), panelNovo.getHeight());
+							addCursosComboBox(panelNovo.getComboBoxCursoCoord(), dao.retornarTodosCursos());
+							addCursosComboBox(panelNovo.getComboBoxCursoEst(), dao.retornarTodosCursos());
 							
 							panelNovo.getBtnCadastrar().addActionListener(this);
 							panelNovo.getBtnLimpar().addActionListener(this);
@@ -117,7 +120,7 @@ public class Controle implements ActionListener {
 									panelNovo.getComboBoxCursoEst().getItemAt(0);
 									panelNovo.getComboBoxUF().getItemAt(0);
 									panelNovo.getComboBoxCursoCoord().getItemAt(0);
-									panelNovo.getFieldDataInicial()..setText("");
+									panelNovo.getFieldDataInicial().setText("");
 									panelNovo.getFieldDataFinal().setText("");
 									panelNovo.getFieldCEP().setText("");
 									panelNovo.getFieldCPFEst().setText("");
@@ -222,5 +225,14 @@ public class Controle implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
+		
+		box.addItem("");
+		while(!cursos.isEmpty()) {
+			box.addItem(cursos.pop());
+		}
+	
+}
 
 }
