@@ -61,28 +61,35 @@ public class Controle implements ActionListener {
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
 				loginSenha.setSenha(panelLogin.getFieldSenha().getText());
 				
-				//implementar loginEhValido em dao
+//============>> implementar loginEhValido em dao
 				
 				if(dao.loginEhValido(loginSenha.getLogin(),loginSenha.getSenha())) {
 					
+					//Da acesso ao panel de menu
+					framePrincipal.setContentPane(panelMenu);
 					
-					// de alguma forma conecta com o panel de menu
+					panelMenu.getMntmNovoFormulrio().addActionListener(this);
+					panelMenu.getMntmAtualizarFormulrio().addActionListener(this);
+					panelMenu.getMntmBuscarFormulrio().addActionListener(this);
+					panelMenu.getMntmExcluirFormulrio().addActionListener(this);					
 					
 					if(e.getActionCommand().equals("Novo Formul\u00E1rio")) {
 						
-						//abre novoF
+						//Da acesso ao panel para novo formulario
+						
+						
 						
 					}else if(e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
 						
-						//abre atualizar
+						//Da acesso ao panel para atualizar
 						
 					}else if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 						
-						//abre buscar
+						//Da acesso ao panel para buscar
 						
 					}else if(e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
 						
-						//abre excluir
+						//Da acesso ao panel para excluir
 						
 					}					
 					
