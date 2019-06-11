@@ -1,6 +1,19 @@
-INSERT INTO cursos VALUES (null,'Informática Biomédica', 'Curso integral');
-INSERT INTO cursos VALUES (null,'Biomedicina', 'Curso vespertino');
-INSERT INTO cursos VALUES (null,'Física Médica', 'Curso bem difícil');
+INSERT INTO cursos VALUES (null,'Biomedicina Diurno', null);
+INSERT INTO cursos VALUES (null,'Biomedicina Noturno', null);
+INSERT INTO cursos VALUES (null,'Enfermagem', null);
+INSERT INTO cursos VALUES (null,'Farmácia', null);
+INSERT INTO cursos VALUES (null,'Física Médica', null);
+INSERT INTO cursos VALUES (null,'Fisioterapia', null);
+INSERT INTO cursos VALUES (null,'Fonoaudiologia', null);
+INSERT INTO cursos VALUES (null,'Gastronomia', null);
+INSERT INTO cursos VALUES (null,'Gestão em Saúde', null);
+INSERT INTO cursos VALUES (null,'Informática Biomédica', 'Melhor curso da universidade.');
+INSERT INTO cursos VALUES (null,'Medicina', null);
+INSERT INTO cursos VALUES (null,'Nutrição', null);
+INSERT INTO cursos VALUES (null,'Psicologia', null);
+INSERT INTO cursos VALUES (null,'Química Medicinal', null);
+INSERT INTO cursos VALUES (null,'Tecnologia de Alimentos', null);
+INSERT INTO cursos VALUES (null,'Toxicologia Analítica', null);
 
 INSERT INTO usuarios VALUES (null, 'admin', 'admin');
 
