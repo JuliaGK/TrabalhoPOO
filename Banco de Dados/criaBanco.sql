@@ -17,6 +17,18 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Usuarios`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Usuarios` (
+  `codigoUsuario` INT NOT NULL AUTO_INCREMENT,
+  `nomeUsuario` VARCHAR(100) NULL,
+  `loginUsuario` VARCHAR(45) NULL,
+  `senhaUsuario` VARCHAR(45) NULL,
+  PRIMARY KEY (`codigoUsuario`));
+
 -- -----------------------------------------------------
 -- Table `mydb`.`Cursos`
 -- -----------------------------------------------------
