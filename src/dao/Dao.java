@@ -8,6 +8,7 @@ import java.util.LinkedList;
 
 import modelo.CadastroCurso;
 import modelo.CadastroEstudante;
+import modelo.LoginSenha;
 
 public class Dao {
 	
@@ -227,6 +228,44 @@ public class Dao {
 				e.printStackTrace();
 			}
 		}
+		
+	}
+	
+public boolean validarLogin(LoginSenha usuario) {
+		
+		Connection con = ConexaoMySQL.getConexao();
+		
+		String sql = "SELECT loginUsuario FROM usuarios WHERE loginUsuario = ? AND senhaUsuario = ?";
+		
+		try {
+			PreparedStatement prep = con.prepareStatement(sql);
+			
+			prep.setString(1, usuario.getLogin());
+			prep.setString(2, usuario.getSenha());
+			
+			ResultSet rs = prep.executeQuery();
+			
+			while(rs.next()){
+				if(rs.getString(1)==null) {
+					return false;
+				}else {
+					return true;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
 		
 	}
 
