@@ -96,6 +96,10 @@ public class Controle implements ActionListener {
 					}else if(e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 						
 						//Da acesso ao panel para buscar
+						framePrincipal.setContentPane(panelBuscar);
+
+						panelBuscar.getBtnBuscar().addActionListener(this);
+						panelBuscar.getBtnLimpar().addActionListener(this);
 						
 					}else if(e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
 						
