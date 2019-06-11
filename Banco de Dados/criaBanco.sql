@@ -24,7 +24,6 @@ USE `mydb` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Usuarios` (
   `codigoUsuario` INT NOT NULL AUTO_INCREMENT,
-  `nomeUsuario` VARCHAR(100) NULL,
   `loginUsuario` VARCHAR(45) NULL,
   `senhaUsuario` VARCHAR(45) NULL,
   PRIMARY KEY (`codigoUsuario`));

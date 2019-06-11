@@ -2,6 +2,8 @@ INSERT INTO cursos VALUES (null,'Informática Biomédica', 'Curso integral');
 INSERT INTO cursos VALUES (null,'Biomedicina', 'Curso vespertino');
 INSERT INTO cursos VALUES (null,'Física Médica', 'Curso bem difícil');
 
+INSERT INTO usuarios VALUES (null, 'admin', 'admin');
+
 INSERT INTO formularios VALUES (
 null,
 'Luriano Bolemberg',
