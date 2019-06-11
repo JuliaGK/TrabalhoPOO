@@ -67,7 +67,7 @@ public class Controle implements ActionListener {
 
 		if (framePrincipal.getContentPane() == panelLogin) {
 
-//			* Botão limpar
+//			* Botï¿½o limpar
 			if (e.getActionCommand().equals("LIMPAR")) {
 
 				panelLogin.getFieldSenha().setText("");
@@ -75,7 +75,7 @@ public class Controle implements ActionListener {
 
 			}
 
-//			* Botão login
+//			* Botï¿½o login
 			if (e.getActionCommand().equals("LOGIN")) {
 
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
@@ -103,7 +103,7 @@ public class Controle implements ActionListener {
 //		+++ Funcionalidades Panel Menu
 		if (framePrincipal.getContentPane() == panelMenu) {
 
-//			* Botão Novo Formulário
+//			* Botï¿½o Novo Formulï¿½rio
 			if (e.getActionCommand().equals("Novo Formul\u00E1rio")) {
 				panelNovo = new PanelNovoF();
 				// Da acesso ao panel para novo formulario
@@ -115,10 +115,8 @@ public class Controle implements ActionListener {
 
 				panelNovo.getBtnCadastrar().addActionListener(this);
 				panelNovo.getBtnLimpar().addActionListener(this);
-
 			}
-
-// 			* Botão Atualizar Formulário
+// 			* Botï¿½o Atualizar Formulï¿½rio
 			if (e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
 				panelAtualizar = new PanelAtualizar();
 				// Da acesso ao panel para atualizar
@@ -132,7 +130,7 @@ public class Controle implements ActionListener {
 				panelAtualizar.getBtnLimpar().addActionListener(this);
 				panelAtualizar.getBtnLimparAtual().addActionListener(this);
 			}
-//			* Botão Buscar Formulário
+//			* Botï¿½o Buscar Formulï¿½rio
 			if (e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 				panelBuscar = new PanelBuscar();
 				// Da acesso ao panel para buscar
@@ -144,7 +142,7 @@ public class Controle implements ActionListener {
 				panelBuscar.getBtnBuscar().addActionListener(this);
 				panelBuscar.getBtnLimpar().addActionListener(this);
 			}
-//			* Botão Excluir Formulário
+//			* Botï¿½o Excluir Formulï¿½rio
 			if (e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
 				panelExcluir = new PanelExcluir();
 				// Da acesso ao panel para excluir
@@ -201,7 +199,7 @@ public class Controle implements ActionListener {
 			}
 
 			if (e.getActionCommand().equalsIgnoreCase("CADASTRAR")) {
-				System.out.println("CADASTRA");
+				
 				cadastroEstudante = new CadastroEstudante();
 				cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
 				cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
@@ -229,24 +227,21 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
 				cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
 
-				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());
-				
+				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());	
 				cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
 				cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
 
 				cadastroEstudante.setSemestEstudante(
 						Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
+				
 				cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
-
 				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
 				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
 				
 				cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
-				
 				Calendar cal = Calendar.getInstance();
 				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
 				
-				System.out.println(cadastroEstudante.toString());
 				dao.registrarFormulario(cadastroEstudante);
 
 			}
@@ -294,13 +289,11 @@ public class Controle implements ActionListener {
 				panelBuscar.getFieldRGCoord().setText(cadastroEstudante.getRgCoord());
 
 				panelBuscar.getFieldDataInicial().setText(cadastroEstudante.getDataInicialEstagio());
-				
 				panelBuscar.getFieldDataFinal().setText(cadastroEstudante.getDataFinalEstagio());
 				panelBuscar.getFieldNascEst().setText(cadastroEstudante.getDataNascEstudante());
 
 				panelBuscar.getComboBoxSemestre().setSelectedIndex(cadastroEstudante.getSemestEstudante());
 				panelBuscar.getComboBoxUF().setSelectedItem(cadastroEstudante.getUfEstudante());
-
 				panelBuscar.getComboBoxCursoEst().setSelectedIndex(cadastroEstudante.getCursoEstudante());
 				panelBuscar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
 				
