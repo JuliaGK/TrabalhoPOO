@@ -251,6 +251,16 @@ public class Controle implements ActionListener {
 
 			}
 		}
+		
+		if(framePrincipal.getContentPane() == panelExcluir) {
+			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
+				dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
+			}
+			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
+				panelExcluir.getFormattedTextField().setText("");
+			}
+			
+		}
 
 	}
 
