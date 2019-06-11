@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.CadastroEstudante;
@@ -96,6 +97,76 @@ public class Dao {
 		}
 		
 		
+	}
+	
+	public CadastroEstudante consultarFormulario (String cpfAluno) {
+		
+		CadastroEstudante form = new CadastroEstudante();
+		
+		Connection con = ConexaoMySQL.getConexao();
+		
+		String sql = "SELECT * FROM formularios WHERE cpfEstudanteFormulario LIKE ?";
+		
+		try {
+			PreparedStatement prep = con.prepareStatement(sql);
+			
+			prep.setString(1, cpfAluno);
+			
+			ResultSet rs = prep.executeQuery();
+			
+			while(rs.next()){
+				
+				form.setNomeCoord(rs.getString(2));
+				form.setCursoCoord(rs.getInt(3));
+				form.setRgCoord(rs.getString(4));
+				form.setCpfCoord(rs.getString(5));
+				form.setCargoResp(rs.getString(6));
+				form.setNomeResp(rs.getString(7));
+				form.setRgResp(rs.getString(8));
+				form.setCpfResp(rs.getString(9));
+				form.setNomeEstudante(rs.getString(10));
+				form.setDataNascEstudante(rs.getDate(11));
+				form.setCpfEstudante(rs.getString(12));
+				form.setRgEstudante(rs.getString(13));
+				form.setLogradEstudante(rs.getString(14));
+				form.setEnderecoEtudante(rs.getString(15));
+				form.setComplemEstudante(rs.getString(16));
+				form.setBairroEstudante(rs.getString(17));
+				form.setCepEstudante(rs.getString(18));
+				form.setCidadeEstudante(rs.getString(19));
+				form.setUfEstudante(rs.getString(20));
+				form.setCursoEstudante(rs.getInt(21));
+				form.setMatricEstudante(rs.getString(22));
+				form.setSemestEstudante(rs.getInt(23));
+				form.setAreaAtuacaoEstagio(rs.getString(24));
+				form.setDuracaoEstagio(rs.getString(25));
+				form.setDataInicialEstagio(rs.getDate(26));
+				form.setDataFinalEstagio(rs.getDate(27));
+				form.setCargaHorariaEstagio(rs.getString(28));
+				form.setNumApoliceSeguroEstagio(rs.getString(29));
+				form.setSeguradoraEstagio(rs.getString(30));
+				form.setSupervEstagio(rs.getString(31));
+				form.setNumSiapeEstagio(rs.getString(32));
+				form.setOrientadorEstagio(rs.getString(33));
+				form.setCargoSupervEstagio(rs.getString(34));
+				form.setAtividadesEstagio(rs.getString(35));
+				form.setDataPreenchimento(rs.getDate(36));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return form;
 	}
 
 }
