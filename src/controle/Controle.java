@@ -247,15 +247,27 @@ public class Controle implements ActionListener {
 			}
 		}
 		
-		if(framePrincipal.getContentPane() == panelExcluir) {
-			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
-				dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
+		
+		if(framePrincipal.getContentPane() == panelAtualizar) {
+			if(e.getActionCommand().equals("Atualizar")) {
+				
 			}
-			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
-				panelExcluir.getFormattedTextField().setText("");
+			
+			if(e.getActionCommand().equals("Buscar")) {
+				
+			}
+			
+			Object comando = e.getSource();
+			if(comando.equals(panelAtualizar.getBtnLimparAtual())) {
+				//limpa os campos do formulário
+				
+			}
+			if(comando.equals(panelAtualizar.getBtnLimpar())){
+				//limpa o campo de busca
 			}
 			
 		}
+		
 		
 		if(framePrincipal.getContentPane() == panelBuscar) {
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
@@ -344,8 +356,20 @@ public class Controle implements ActionListener {
 				panelBuscar.getTextArea().setText("");
 			}
 		}
+				
+		if(framePrincipal.getContentPane() == panelExcluir) {
+			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
+				dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
+			}
+			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
+				panelExcluir.getFormattedTextField().setText("");
+			}
+			
+		}
 
 	}
+	
+	
 
 	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
 
