@@ -72,7 +72,7 @@ public class Controle implements ActionListener {
 				
 //============>> implementar loginEhValido em dao
 				
-				if(dao.loginEhValido(loginSenha.getLogin(),loginSenha.getSenha())) {
+				if(dao.validarLogin(loginSenha)) {
 					
 					//Da acesso ao panel de menu
 					framePrincipal.setContentPane(panelMenu);
