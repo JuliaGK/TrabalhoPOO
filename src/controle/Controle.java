@@ -77,6 +77,7 @@ public class Controle implements ActionListener {
 						
 						//Da acesso ao panel para novo formulario
 						framePrincipal.setContentPane(panelNovo);
+						framePrincipal.setSize(panelNovo.getWidth(), panelNovo.getHeight());
 						
 						panelNovo.getBtnCadastrar().addActionListener(this);
 						panelNovo.getBtnLimpar().addActionListener(this);
@@ -87,6 +88,7 @@ public class Controle implements ActionListener {
 						
 						//Da acesso ao panel para atualizar
 						framePrincipal.setContentPane(panelAtualizar);
+						framePrincipal.setSize(panelAtualizar.getWidth(), panelAtualizar.getHeight());
 						
 						panelAtualizar.getBtnAtualizar().addActionListener(this);
 						panelAtualizar.getBtnBuscar().addActionListener(this);
@@ -97,6 +99,7 @@ public class Controle implements ActionListener {
 						
 						//Da acesso ao panel para buscar
 						framePrincipal.setContentPane(panelBuscar);
+						framePrincipal.setSize(panelBuscar.getWidth(), panelBuscar.getHeight());
 
 						panelBuscar.getBtnBuscar().addActionListener(this);
 						panelBuscar.getBtnLimpar().addActionListener(this);
@@ -105,6 +108,7 @@ public class Controle implements ActionListener {
 						
 						//Da acesso ao panel para excluir
 						framePrincipal.setContentPane(panelExcluir);
+						framePrincipal.setSize(panelExcluir.getWidth(), panelExcluir.getHeight());
 
 						panelExcluir.getBtnExcluir().addActionListener(this);
 						panelExcluir.getBtnLimpar().addActionListener(this);
