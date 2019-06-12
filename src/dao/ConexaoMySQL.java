@@ -18,7 +18,7 @@ public class ConexaoMySQL {
 		String servername = "localhost";
 		String database = "mydb";
 		String user = "root";
-		String password = "SENHA";
+		String password = "123456";
 		String url = "jdbc:mysql://"+servername+":3306/"+database;
 		
 		try {

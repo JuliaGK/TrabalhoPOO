@@ -29,12 +29,12 @@ import visao.PanelNovoF;
 public class Controle implements ActionListener {
 
 	private FramePrincipal framePrincipal;
-	private PanelAtualizar panelAtualizar;
-	private PanelBuscar panelBuscar;
-	private PanelExcluir panelExcluir;
+	private PanelAtualizar panelAtualizar = new PanelAtualizar();
+	private PanelBuscar panelBuscar = new PanelBuscar();
+	private PanelExcluir panelExcluir = new PanelExcluir();
 	private PanelLogin panelLogin = new PanelLogin();
-	private PanelMenu panelMenu;
-	private PanelNovoF panelNovo;
+	private PanelMenu panelMenu = new PanelMenu();
+	private PanelNovoF panelNovo = new PanelNovoF();
 	private LinkedList<String> listaCursos;
 
 	private LoginSenha loginSenha = new LoginSenha();
@@ -48,16 +48,28 @@ public class Controle implements ActionListener {
 	public Controle() {
 
 		framePrincipal = new FramePrincipal();
-		framePrincipal.setVisible(true);
 
 		// Inicia com o panel de login
 
 		framePrincipal.setContentPane(panelLogin);
 		framePrincipal.setSize(panelLogin.getWidth(), panelLogin.getHeight());
 
+		framePrincipal.setVisible(true);
+
 		panelLogin.getBtnLogin().addActionListener(this);
 		panelLogin.getBtnLimpar().addActionListener(this);
-
+		panelBuscar.getBtnBuscar().addActionListener(this);
+		panelBuscar.getBtnLimpar().addActionListener(this);
+		panelExcluir.getBtnExcluir().addActionListener(this);
+		panelExcluir.getBtnLimpar().addActionListener(this);
+		panelNovo.getBtnCadastrar().addActionListener(this);
+		panelNovo.getBtnLimpar().addActionListener(this);
+		panelAtualizar.getBtnAtualizar().addActionListener(this);
+		panelAtualizar.getBtnBuscar().addActionListener(this);
+		panelAtualizar.getBtnLimpar().addActionListener(this);
+		panelAtualizar.getBtnLimparAtual().addActionListener(this);
+		
+		
 		dao = new Dao();
 		listaCursos = dao.retornarTodosCursos();
 
@@ -66,11 +78,16 @@ public class Controle implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-// 		+++ Funcionalidades do Panel Login
-
+		/**
+		 * Funcionalidades do panel de login
+		 */
+		
 		if (framePrincipal.getContentPane() == panelLogin) {
 
-//			* Bot�o limpar
+			/**
+			 * Acao do botao LIMPAR
+			 */
+			
 			if (e.getActionCommand().equals("LIMPAR")) {
 
 				panelLogin.getFieldSenha().setText("");
@@ -78,7 +95,10 @@ public class Controle implements ActionListener {
 
 			}
 
-//			* Bot�o login
+			/**
+			 * Acao do botao LOGIN
+			 */
+			
 			if (e.getActionCommand().equals("LOGIN")) {
 
 				loginSenha.setLogin(panelLogin.getFieldUsuario().getText());
@@ -87,7 +107,6 @@ public class Controle implements ActionListener {
 				if (dao.validarLogin(loginSenha)) {
 
 					// Da acesso ao panel de menu
-					panelMenu = new PanelMenu();
 
 					panelMenu.getMntmNovoFormulrio().addActionListener(this);
 					panelMenu.getMntmAtualizarFormulrio().addActionListener(this);
@@ -103,12 +122,17 @@ public class Controle implements ActionListener {
 			}
 		}
 
-//		+++ Funcionalidades Panel Menu
+		/**
+		 * Funcionalidades do panel Menu
+		 */
+		
 		if (framePrincipal.getContentPane() == panelMenu) {
-
-//			* Bot�o Novo Formul�rio
+			
+			/**
+			 * Acao do menuItem novo formulario
+			 */
+			
 			if (e.getActionCommand().equals("Novo Formul\u00E1rio")) {
-				panelNovo = new PanelNovoF();
 				// Da acesso ao panel para novo formulario
 				framePrincipal.setContentPane(panelNovo);
 				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
@@ -119,12 +143,16 @@ public class Controle implements ActionListener {
 				panelNovo.getBtnCadastrar().addActionListener(this);
 				panelNovo.getBtnLimpar().addActionListener(this);
 			}
-// 			* Bot�o Atualizar Formul�rio
+			
+			/**
+			 * Acao do menuItem atualizar formulario
+			 */
+			
 			if (e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
-				panelAtualizar = new PanelAtualizar();
 				// Da acesso ao panel para atualizar
 				framePrincipal.setContentPane(panelAtualizar);
-				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+				framePrincipal.setSize(panelAtualizar.getWidth(), panelAtualizar.getHeight());
+				//framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
 				addCursosComboBox(panelAtualizar.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelAtualizar.getComboBoxCursoEst(), listaCursos);
 
@@ -133,9 +161,12 @@ public class Controle implements ActionListener {
 				panelAtualizar.getBtnLimpar().addActionListener(this);
 				panelAtualizar.getBtnLimparAtual().addActionListener(this);
 			}
-//			* Bot�o Buscar Formul�rio
+
+			/**
+			 * Acao do menuItem buscar formulario
+			 */
+			
 			if (e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
-				panelBuscar = new PanelBuscar();
 				// Da acesso ao panel para buscar
 				framePrincipal.setContentPane(panelBuscar);
 				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
@@ -145,9 +176,12 @@ public class Controle implements ActionListener {
 				panelBuscar.getBtnBuscar().addActionListener(this);
 				panelBuscar.getBtnLimpar().addActionListener(this);
 			}
-//			* Bot�o Excluir Formul�rio
+
+			/**
+			 * Acao do menuItem excluir formulario
+			 */
+			
 			if (e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
-				panelExcluir = new PanelExcluir();
 				// Da acesso ao panel para excluir
 				framePrincipal.setContentPane(panelExcluir);
 				framePrincipal.setSize(360, 180);
@@ -159,9 +193,16 @@ public class Controle implements ActionListener {
 
 		}
 		
-//		+++ Funcionalidades Panel de cadastro (novo)
+		/**
+ 		* Funcionalidades do panel de novo cadastro
+ 		*/
+		
 		if (framePrincipal.getContentPane() == panelNovo) {
-//			*Botão Limpar Formulário
+			
+			/**
+			 * Acao do botao LIMPAR
+			 */
+			
 			if (e.getActionCommand().equalsIgnoreCase("LIMPAR")) {
 				panelNovo.getFieldNomeCoord().setText("");
 				panelNovo.getFieldNomeResp().setText("");
@@ -198,7 +239,11 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldCPFBusca().setText("");
 				panelNovo.getTextArea().setText("");
 			}
-//			*Botão cadastrar novo formulário
+			
+			/**
+			 * Acao do botao CADASTRAR
+			 */
+			
 			if (e.getActionCommand().equalsIgnoreCase("CADASTRAR")) {
 				//verifica se todos os campos foram preenchidos
 				if(panelNovo.getFieldNomeCoord().getText().isEmpty() || panelNovo.getFieldNomeResp().getText().isEmpty() ||
@@ -268,9 +313,17 @@ public class Controle implements ActionListener {
 			}
 		}
 		
-//		+++Funcionalidades do painel de atualização
+
+		/**
+		 * Funcionalidades do panel de atualizar formulario
+		 */
+		
 		if(framePrincipal.getContentPane() == panelAtualizar) {
-//			*Botão que atualiza cadastro
+
+			/**
+			 * Acao do botao Atualizar
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Atualizar")) {
 			
 				//buscar -> atualizar = dados já carregados na tela
@@ -313,7 +366,7 @@ public class Controle implements ActionListener {
 					Calendar cal = Calendar.getInstance();
 					cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
 					
-//=============> função do dao para atualizar
+//=============> funcao do dao para atualizar
 					
 					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro atualizado com sucesso!");
 					
@@ -323,7 +376,11 @@ public class Controle implements ActionListener {
 				}
 	
 			}
-//			*Botão que busca um cadastro no banco			
+
+			/**
+			 * Acao do botao Buscar
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
 				cadastroEstudante = new CadastroEstudante();
 				
@@ -370,8 +427,12 @@ public class Controle implements ActionListener {
 					
 					panelAtualizar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
 				}
-			}			
-//			*Botão que limpa os dados existentes no formulário			
+			}
+			
+			/**
+			 * Acao do botao de limpar dados existentes no formulario
+			 */
+
 			Object comando = e.getSource();
 			if(comando.equals(panelAtualizar.getBtnLimparAtual())) {
 				
@@ -411,23 +472,34 @@ public class Controle implements ActionListener {
 				panelAtualizar.getFieldRGCoord().setText("");
 				panelAtualizar.getTextArea().setText("");			
 			}
-//			*Botão que limpa a area de pesquisa
+
+			/**
+			 * Acao do botao que limpa a area de pesquisa
+			 */
+			
 			if(comando.equals(panelAtualizar.getBtnLimpar())){
 				panelAtualizar.getFieldCPFBusca().setText("");
 			}
 			
 		}
 		
-//		+++Funcionalidades do painel de busca		
+		/**
+		 * Funcionalidades do painel de busca por formulario
+		 */
+		
 		if(framePrincipal.getContentPane() == panelBuscar) {
-//			*Botão buscar cadastro			
+
+			/**
+			 * Acao do botao Buscar
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
-				
+				System.out.println("BBB");
 				if(dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText()) == null) {
 					JOptionPane.showMessageDialog(panelBuscar, "Cadastro não encontrado!", "Erro",
 							JOptionPane.ERROR_MESSAGE);
 				}else {
-					
+					System.out.println("AA");
 					cadastroEstudante = new CadastroEstudante();
 					cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
 					
@@ -467,9 +539,15 @@ public class Controle implements ActionListener {
 					panelBuscar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
 					
 					panelBuscar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
+					
+					panelBuscar.repaint();
 				}
 			}
-//			*Botão limpar área do formulário			
+
+			/**
+			 * Acao do botao Limpar
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
 				
 				panelBuscar.getFieldCPFBusca().setText("");
@@ -513,9 +591,16 @@ public class Controle implements ActionListener {
 			}
 		}
 				
-//		+++Funcionalidade do painel de exclusão		
+		/**
+		 * Funcionalidades do painel de exclusao
+		 */
+		
 		if(framePrincipal.getContentPane() == panelExcluir) {
-//			*Botão excluir
+			
+			/**
+			 * Acao do botao excluir
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
 				
 				if(dao.excluirFormulario(panelExcluir.getFormattedTextField().getText())) {
@@ -527,15 +612,26 @@ public class Controle implements ActionListener {
 				}
 				
 			}
-//			*Botão limpar busca
+
+			/**
+			 * Acao do botao limpar
+			 */
+			
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
 				panelExcluir.getFormattedTextField().setText("");
+				
 			}
 			
 		}
 
 	}
 
+	/**
+	 * Adiciona ao comboBox de cursos os cursos registrados no banco de dados
+	 * @param box O comboBox a ser adicionado
+	 * @param cursos Uma linkedList com os cursos do banco de dados
+	 */
+	
 	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
 
 		box.addItem("");

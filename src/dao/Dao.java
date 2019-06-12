@@ -12,6 +12,11 @@ import modelo.LoginSenha;
 
 public class Dao {
 	
+	/**
+	 * Registra um formulário no banco de dados
+	 * @param form Modelo do formulário a ser registrado
+	 */
+	
 	public void registrarFormulario (CadastroEstudante form) {
 		
 		Connection con = ConexaoMySQL.getConexao();
@@ -74,6 +79,12 @@ public class Dao {
 		
 	}
 	
+	/**
+	 * Exclui do banco de dados o formulário de um aluno
+	 * @param cpfAluno CPF do aluno
+	 * @return Caso seja possível excluir, retorna true. Caso contrário, retorna false.
+	 */
+	
 	public boolean excluirFormulario(String cpfAluno) {
 		
 		Connection con = ConexaoMySQL.getConexao();
@@ -103,6 +114,12 @@ public class Dao {
 		
 		return true;
 	}
+	
+	/**
+	 * Verifica se existe um formulário já cadastrado no banco de dados para o aluno
+	 * @param cpfAluno String com o cpf do aluno a ser buscado
+	 * @return Caso exista, retorna o modelo do formulário
+	 */
 	
 	public CadastroEstudante consultarFormulario (String cpfAluno) {
 		
@@ -174,6 +191,11 @@ public class Dao {
 		return form;
 	}
 	
+	/**
+	 * Retorna uma lista com todos os cursos cadastrados no banco de dados
+	 * @return LinkedList com os cursos cadastrados
+	 */
+	
 	public LinkedList<String> retornarTodosCursos() {
 		LinkedList<String> cursos = new LinkedList<>();
 		
@@ -207,6 +229,11 @@ public class Dao {
 		return cursos;
 	}
 	
+	/** 
+	 * Cadastra um curso no banco de dados
+	 * @param curso Modelo a ser adicionado no banco 
+	 */
+	
 	public void cadastraCurso(CadastroCurso curso) {
 		
 		Connection con =  ConexaoMySQL.getConexao();
@@ -233,7 +260,13 @@ public class Dao {
 		
 	}
 	
-public boolean validarLogin(LoginSenha usuario) {
+	/**
+	 * Verifica se o usuario está cadastrado no banco e se a senha está correta 
+	 * @param usuario Modelo de LoginSenha com os dados do usuario
+	 * @return Retorna true se existe um usuario com as informações inseridas. Caso contrário, retorna false.
+	 */
+	
+	public boolean validarLogin(LoginSenha usuario) {
 		
 		Connection con = ConexaoMySQL.getConexao();
 		
@@ -270,5 +303,8 @@ public boolean validarLogin(LoginSenha usuario) {
 		return false;
 		
 	}
-
+	
+	public boolean atualizar() {
+		return true;
+	}
 }

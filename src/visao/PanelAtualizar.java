@@ -157,9 +157,9 @@ public class PanelAtualizar extends JPanel {
 		lblDadosConcedente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add(lblDadosConcedente, "cell 0 14 5 1,alignx center");
 
-		JLabel lblRespons�velEmpresa = new JLabel("Nome Respons\u00E1vel");
-		lblRespons�velEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblRespons�velEmpresa, "flowx,cell 0 15");
+		JLabel lblResponsavelEmpresa = new JLabel("Nome Respons\u00E1vel");
+		lblResponsavelEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		add(lblResponsavelEmpresa, "flowx,cell 0 15");
 
 		FieldNomeResp = new JTextField();
 		add(FieldNomeResp, "cell 1 15,growx");
