@@ -421,45 +421,52 @@ public class Controle implements ActionListener {
 		if(framePrincipal.getContentPane() == panelBuscar) {
 //			*Botão buscar cadastro			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
-				cadastroEstudante = new CadastroEstudante();
-				cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
 				
-				panelBuscar.getFieldNomeCoord().setText(cadastroEstudante.getNomeCoord());
-				panelBuscar.getFieldNomeResp().setText(cadastroEstudante.getNomeResp());
-				panelBuscar.getFieldNomeEst().setText(cadastroEstudante.getNomeEstudante());
-				panelBuscar.getFieldCargoResp().setText(cadastroEstudante.getCargoResp());
-				panelBuscar.getFieldEndereco().setText(cadastroEstudante.getEnderecoEtudante());
-				panelBuscar.getFieldComplemento().setText(cadastroEstudante.getComplemEstudante());
-				panelBuscar.getFieldBairro().setText(cadastroEstudante.getBairroEstudante());
-				panelBuscar.getFieldCidade().setText(cadastroEstudante.getCidadeEstudante());
-				panelBuscar.getFieldAreaAtuacao().setText(cadastroEstudante.getAreaAtuacaoEstagio());
-				panelBuscar.getFieldDuracaoEstag().setText(cadastroEstudante.getDuracaoEstagio());
-				panelBuscar.getFieldCHSem().setText(cadastroEstudante.getCargaHorariaEstagio());
-				panelBuscar.getFieldNApolSeg().setText(cadastroEstudante.getNumApoliceSeguroEstagio());
-				panelBuscar.getFieldSeguradora().setText(cadastroEstudante.getSeguradoraEstagio());
-				panelBuscar.getFieldProfResp().setText(cadastroEstudante.getOrientadorEstagio());
-				panelBuscar.getFieldSIAPE().setText(cadastroEstudante.getNumSiapeEstagio());
-				panelBuscar.getFieldSupervidorEmpresa().setText(cadastroEstudante.getSupervEstagio());
-				panelBuscar.getFieldCargoSupervEmpresa().setText(cadastroEstudante.getCargoSupervEstagio());
-				panelBuscar.getFieldCEP().setText(cadastroEstudante.getCepEstudante());
-				panelBuscar.getFieldCPFEst().setText(cadastroEstudante.getCpfEstudante());
-				panelBuscar.getFieldRGEst().setText(cadastroEstudante.getRgEstudante());
-				panelBuscar.getFieldCPFResp().setText(cadastroEstudante.getCpfResp());
-				panelBuscar.getFieldRGResp().setText(cadastroEstudante.getRgResp());
-				panelBuscar.getFieldMatEst().setText(cadastroEstudante.getMatricEstudante());
-				panelBuscar.getFieldCPFCoord().setText(cadastroEstudante.getCpfCoord());
-				panelBuscar.getFieldRGCoord().setText(cadastroEstudante.getRgCoord());
-
-				panelBuscar.getFieldDataInicial().setText(cadastroEstudante.getDataInicialEstagio());
-				panelBuscar.getFieldDataFinal().setText(cadastroEstudante.getDataFinalEstagio());
-				panelBuscar.getFieldNascEst().setText(cadastroEstudante.getDataNascEstudante());
-
-				panelBuscar.getComboBoxSemestre().setSelectedIndex(cadastroEstudante.getSemestEstudante());
-				panelBuscar.getComboBoxUF().setSelectedItem(cadastroEstudante.getUfEstudante());
-				panelBuscar.getComboBoxCursoEst().setSelectedIndex(cadastroEstudante.getCursoEstudante());
-				panelBuscar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
-				
-				panelBuscar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
+				if(dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText()) == null) {
+					JOptionPane.showMessageDialog(panelBuscar, "Cadastro não encontrado!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}else {
+					
+					cadastroEstudante = new CadastroEstudante();
+					cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
+					
+					panelBuscar.getFieldNomeCoord().setText(cadastroEstudante.getNomeCoord());
+					panelBuscar.getFieldNomeResp().setText(cadastroEstudante.getNomeResp());
+					panelBuscar.getFieldNomeEst().setText(cadastroEstudante.getNomeEstudante());
+					panelBuscar.getFieldCargoResp().setText(cadastroEstudante.getCargoResp());
+					panelBuscar.getFieldEndereco().setText(cadastroEstudante.getEnderecoEtudante());
+					panelBuscar.getFieldComplemento().setText(cadastroEstudante.getComplemEstudante());
+					panelBuscar.getFieldBairro().setText(cadastroEstudante.getBairroEstudante());
+					panelBuscar.getFieldCidade().setText(cadastroEstudante.getCidadeEstudante());
+					panelBuscar.getFieldAreaAtuacao().setText(cadastroEstudante.getAreaAtuacaoEstagio());
+					panelBuscar.getFieldDuracaoEstag().setText(cadastroEstudante.getDuracaoEstagio());
+					panelBuscar.getFieldCHSem().setText(cadastroEstudante.getCargaHorariaEstagio());
+					panelBuscar.getFieldNApolSeg().setText(cadastroEstudante.getNumApoliceSeguroEstagio());
+					panelBuscar.getFieldSeguradora().setText(cadastroEstudante.getSeguradoraEstagio());
+					panelBuscar.getFieldProfResp().setText(cadastroEstudante.getOrientadorEstagio());
+					panelBuscar.getFieldSIAPE().setText(cadastroEstudante.getNumSiapeEstagio());
+					panelBuscar.getFieldSupervidorEmpresa().setText(cadastroEstudante.getSupervEstagio());
+					panelBuscar.getFieldCargoSupervEmpresa().setText(cadastroEstudante.getCargoSupervEstagio());
+					panelBuscar.getFieldCEP().setText(cadastroEstudante.getCepEstudante());
+					panelBuscar.getFieldCPFEst().setText(cadastroEstudante.getCpfEstudante());
+					panelBuscar.getFieldRGEst().setText(cadastroEstudante.getRgEstudante());
+					panelBuscar.getFieldCPFResp().setText(cadastroEstudante.getCpfResp());
+					panelBuscar.getFieldRGResp().setText(cadastroEstudante.getRgResp());
+					panelBuscar.getFieldMatEst().setText(cadastroEstudante.getMatricEstudante());
+					panelBuscar.getFieldCPFCoord().setText(cadastroEstudante.getCpfCoord());
+					panelBuscar.getFieldRGCoord().setText(cadastroEstudante.getRgCoord());
+	
+					panelBuscar.getFieldDataInicial().setText(cadastroEstudante.getDataInicialEstagio());
+					panelBuscar.getFieldDataFinal().setText(cadastroEstudante.getDataFinalEstagio());
+					panelBuscar.getFieldNascEst().setText(cadastroEstudante.getDataNascEstudante());
+	
+					panelBuscar.getComboBoxSemestre().setSelectedIndex(cadastroEstudante.getSemestEstudante());
+					panelBuscar.getComboBoxUF().setSelectedItem(cadastroEstudante.getUfEstudante());
+					panelBuscar.getComboBoxCursoEst().setSelectedIndex(cadastroEstudante.getCursoEstudante());
+					panelBuscar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
+					
+					panelBuscar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
+				}
 			}
 //			*Botão limpar área do formulário			
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
