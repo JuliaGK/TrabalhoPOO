@@ -41,7 +41,7 @@ public class Controle implements ActionListener {
 	private CadastroEstudante cadastroEstudante;
 
 	private Dao dao;
-	
+
 	private boolean flagBtnBuscarAcionado = false;
 	private boolean flagBtnLimparFormAcionado = false;
 
@@ -200,45 +200,71 @@ public class Controle implements ActionListener {
 			}
 //			*Botão cadastrar novo formulário
 			if (e.getActionCommand().equalsIgnoreCase("CADASTRAR")) {
-				cadastroEstudante = new CadastroEstudante();
-				cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
-				cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
-				cadastroEstudante.setNomeEstudante(panelNovo.getFieldNomeEst().getText());
-				cadastroEstudante.setCargoResp(panelNovo.getFieldCargoResp().getText());
-				cadastroEstudante.setEnderecoEtudante(panelNovo.getFieldEndereco().getText());
-				cadastroEstudante.setComplemEstudante(panelNovo.getFieldComplemento().getText());
-				cadastroEstudante.setBairroEstudante(panelNovo.getFieldBairro().getText());
-				cadastroEstudante.setCidadeEstudante(panelNovo.getFieldCidade().getText());
-				cadastroEstudante.setAreaAtuacaoEstagio(panelNovo.getFieldAreaAtuacao().getText());
-				cadastroEstudante.setDuracaoEstagio(panelNovo.getFieldDuracaoEstag().getText());
-				cadastroEstudante.setCargaHorariaEstagio(panelNovo.getFieldCHSem().getText());
-				cadastroEstudante.setNumApoliceSeguroEstagio(panelNovo.getFieldNApolSeg().getText());
-				cadastroEstudante.setSeguradoraEstagio(panelNovo.getFieldSeguradora().getText());
-				cadastroEstudante.setOrientadorEstagio(panelNovo.getFieldProfResp().getText());
-				cadastroEstudante.setNumSiapeEstagio(panelNovo.getFieldSIAPE().getText());
-				cadastroEstudante.setSupervEstagio(panelNovo.getFieldSupervidorEmpresa().getText());
-				cadastroEstudante.setCargoSupervEstagio(panelNovo.getFieldCargoSupervEmpresa().getText());
-				cadastroEstudante.setCepEstudante(panelNovo.getFieldCEP().getText());
-				cadastroEstudante.setCpfEstudante(panelNovo.getFieldCPFEst().getText());
-				cadastroEstudante.setRgEstudante(panelNovo.getFieldRGEst().getText());
-				cadastroEstudante.setCpfResp(panelNovo.getFieldCPFResp().getText());
-				cadastroEstudante.setRgResp(panelNovo.getFieldRGResp().getText());
-				cadastroEstudante.setMatricEstudante(panelNovo.getFieldMatEst().getText());
-				cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
-				cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
-				cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());	
-				cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
-				cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
-				cadastroEstudante.setSemestEstudante(
-						Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
-				cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
-				cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
-				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
-				cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
-				Calendar cal = Calendar.getInstance();
-				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));			
+				//verifica se todos os campos foram preenchidos
+				if(panelNovo.getFieldNomeCoord().getText().isEmpty() || panelNovo.getFieldNomeResp().getText().isEmpty() ||
+				panelNovo.getFieldNomeEst().getText().isEmpty() || panelNovo.getFieldCargoResp().getText().isEmpty() ||
+				panelNovo.getFieldEndereco().getText().isEmpty() || panelNovo.getFieldComplemento().getText().isEmpty() ||
+				panelNovo.getFieldBairro().getText().isEmpty() || panelNovo.getFieldCidade().getText().isEmpty() ||
+				panelNovo.getFieldAreaAtuacao().getText().isEmpty() || panelNovo.getFieldDuracaoEstag().getText().isEmpty() ||
+				panelNovo.getFieldCHSem().getText().isEmpty() || panelNovo.getFieldNApolSeg().getText().isEmpty() ||
+				panelNovo.getFieldSeguradora().getText().isEmpty() || panelNovo.getFieldProfResp().getText().isEmpty() ||
+				panelNovo.getFieldSIAPE().getText().isEmpty() || panelNovo.getFieldSupervidorEmpresa().getText().isEmpty() ||
+				panelNovo.getFieldCargoSupervEmpresa().getText().isEmpty() || panelNovo.getComboBoxSemestre().getSelectedIndex() == -1 ||
+				panelNovo.getComboBoxCursoEst().getSelectedIndex() == -1 || panelNovo.getComboBoxUF().getSelectedIndex() == -1 ||
+				panelNovo.getComboBoxCursoCoord().getSelectedIndex() == -1 || panelNovo.getFieldDataInicial().getText().isEmpty() ||
+				panelNovo.getFieldDataFinal().getText().isEmpty() || panelNovo.getFieldCEP().getText().isEmpty() ||
+				panelNovo.getFieldCPFEst().getText().isEmpty() || panelNovo.getFieldRGEst().getText().isEmpty() ||
+				panelNovo.getFieldNascEst().getText().isEmpty() || panelNovo.getFieldCPFResp().getText().isEmpty() ||
+				panelNovo.getFieldRGResp().getText().isEmpty() || panelNovo.getFieldMatEst().getText().isEmpty() ||
+				panelNovo.getFieldCPFCoord().getText().isEmpty() || panelNovo.getFieldRGCoord().getText().isEmpty() ||
+				panelNovo.getFieldCPFBusca().getText().isEmpty() || panelNovo.getTextArea().getText().isEmpty()) {
+					
+					JOptionPane.showMessageDialog(panelAtualizar, 
+							"Falha ao cadastrar! Todos os campos são obrigatórios.", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+					
+				}else {
+					cadastroEstudante = new CadastroEstudante();
+					cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
+					cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());
+					cadastroEstudante.setNomeEstudante(panelNovo.getFieldNomeEst().getText());
+					cadastroEstudante.setCargoResp(panelNovo.getFieldCargoResp().getText());
+					cadastroEstudante.setEnderecoEtudante(panelNovo.getFieldEndereco().getText());
+					cadastroEstudante.setComplemEstudante(panelNovo.getFieldComplemento().getText());
+					cadastroEstudante.setBairroEstudante(panelNovo.getFieldBairro().getText());
+					cadastroEstudante.setCidadeEstudante(panelNovo.getFieldCidade().getText());
+					cadastroEstudante.setAreaAtuacaoEstagio(panelNovo.getFieldAreaAtuacao().getText());
+					cadastroEstudante.setDuracaoEstagio(panelNovo.getFieldDuracaoEstag().getText());
+					cadastroEstudante.setCargaHorariaEstagio(panelNovo.getFieldCHSem().getText());
+					cadastroEstudante.setNumApoliceSeguroEstagio(panelNovo.getFieldNApolSeg().getText());
+					cadastroEstudante.setSeguradoraEstagio(panelNovo.getFieldSeguradora().getText());
+					cadastroEstudante.setOrientadorEstagio(panelNovo.getFieldProfResp().getText());
+					cadastroEstudante.setNumSiapeEstagio(panelNovo.getFieldSIAPE().getText());
+					cadastroEstudante.setSupervEstagio(panelNovo.getFieldSupervidorEmpresa().getText());
+					cadastroEstudante.setCargoSupervEstagio(panelNovo.getFieldCargoSupervEmpresa().getText());
+					cadastroEstudante.setCepEstudante(panelNovo.getFieldCEP().getText());
+					cadastroEstudante.setCpfEstudante(panelNovo.getFieldCPFEst().getText());
+					cadastroEstudante.setRgEstudante(panelNovo.getFieldRGEst().getText());
+					cadastroEstudante.setCpfResp(panelNovo.getFieldCPFResp().getText());
+					cadastroEstudante.setRgResp(panelNovo.getFieldRGResp().getText());
+					cadastroEstudante.setMatricEstudante(panelNovo.getFieldMatEst().getText());
+					cadastroEstudante.setCpfCoord(panelNovo.getFieldCPFCoord().getText());
+					cadastroEstudante.setRgCoord(panelNovo.getFieldRGCoord().getText());
+					cadastroEstudante.setDataInicialEstagio(panelNovo.getFieldDataInicial().getText());	
+					cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
+					cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
+					cadastroEstudante.setSemestEstudante(
+							Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
+					cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
+					cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
+					cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
+					cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
+					Calendar cal = Calendar.getInstance();
+					cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));					
 				
-			}
+					dao.registrarFormulario(cadastroEstudante);
+					JOptionPane.showMessageDialog(panelNovo, "Cadastrado com sucesso!");
+				}
 		}
 		
 //		+++Funcionalidades do painel de atualização
@@ -487,8 +513,6 @@ public class Controle implements ActionListener {
 		}
 
 	}
-	
-	
 
 	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
 
