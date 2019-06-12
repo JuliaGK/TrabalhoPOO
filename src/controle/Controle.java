@@ -121,6 +121,7 @@ public class Controle implements ActionListener {
 					framePrincipal.setContentPane(panelMenu);
 					framePrincipal.setSize(374, 461);
 					framePrincipal.repaint();
+					
 				} else {
 					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!", "Erro",
 							JOptionPane.ERROR_MESSAGE);
@@ -140,9 +141,9 @@ public class Controle implements ActionListener {
 			
 			if (e.getActionCommand().equals("Novo Formul\u00E1rio")) {
 				// Da acesso ao panel para novo formulario
+				framePrincipal.setSize(800, 800);
 				framePrincipal.setContentPane(panelNovo);
 				framePrincipal.setLocationRelativeTo(null);
-				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
 
 				addCursosComboBox(panelNovo.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelNovo.getComboBoxCursoEst(), listaCursos);
@@ -158,7 +159,7 @@ public class Controle implements ActionListener {
 			
 			if (e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
 				// Da acesso ao panel para atualizar
-				framePrincipal.setSize(panelAtualizar.getWidth(), panelAtualizar.getHeight());
+				framePrincipal.setSize(800, 800);
 				framePrincipal.setContentPane(panelAtualizar);
 				framePrincipal.setLocationRelativeTo(null);
 				
@@ -178,8 +179,8 @@ public class Controle implements ActionListener {
 			
 			if (e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 				// Da acesso ao panel para buscar
+				framePrincipal.setSize(800, 800);
 				framePrincipal.setContentPane(panelBuscar);
-				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH);// deixa fullscreen
 				framePrincipal.setLocationRelativeTo(null);
 				addCursosComboBox(panelBuscar.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelBuscar.getComboBoxCursoEst(), listaCursos);
