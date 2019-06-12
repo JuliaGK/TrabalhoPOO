@@ -41,6 +41,9 @@ public class Controle implements ActionListener {
 	private CadastroEstudante cadastroEstudante;
 
 	private Dao dao;
+	
+	private boolean flagBtnBuscarAcionado = false;
+	private boolean flagBtnLimparFormAcionado = false;
 
 	public Controle() {
 
@@ -243,18 +246,62 @@ public class Controle implements ActionListener {
 		if(framePrincipal.getContentPane() == panelAtualizar) {
 //			*Botão que atualiza cadastro
 			if(e.getActionCommand().equalsIgnoreCase("Atualizar")) {
-				
-				if() {
+			
+				//buscar -> atualizar = dados já carregados na tela
+				if(flagBtnBuscarAcionado==true && flagBtnLimparFormAcionado==false) {
+					cadastroEstudante = new CadastroEstudante();
+					cadastroEstudante.setNomeCoord(panelAtualizar.getFieldNomeCoord().getText());
+					cadastroEstudante.setNomeResp(panelAtualizar.getFieldNomeResp().getText());
+					cadastroEstudante.setNomeEstudante(panelAtualizar.getFieldNomeEst().getText());
+					cadastroEstudante.setCargoResp(panelAtualizar.getFieldCargoResp().getText());
+					cadastroEstudante.setEnderecoEtudante(panelAtualizar.getFieldEndereco().getText());
+					cadastroEstudante.setComplemEstudante(panelAtualizar.getFieldComplemento().getText());
+					cadastroEstudante.setBairroEstudante(panelAtualizar.getFieldBairro().getText());
+					cadastroEstudante.setCidadeEstudante(panelAtualizar.getFieldCidade().getText());
+					cadastroEstudante.setAreaAtuacaoEstagio(panelAtualizar.getFieldAreaAtuacao().getText());
+					cadastroEstudante.setDuracaoEstagio(panelAtualizar.getFieldDuracaoEstag().getText());
+					cadastroEstudante.setCargaHorariaEstagio(panelAtualizar.getFieldCHSem().getText());
+					cadastroEstudante.setNumApoliceSeguroEstagio(panelAtualizar.getFieldNApolSeg().getText());
+					cadastroEstudante.setSeguradoraEstagio(panelAtualizar.getFieldSeguradora().getText());
+					cadastroEstudante.setOrientadorEstagio(panelAtualizar.getFieldProfResp().getText());
+					cadastroEstudante.setNumSiapeEstagio(panelAtualizar.getFieldSIAPE().getText());
+					cadastroEstudante.setSupervEstagio(panelAtualizar.getFieldSupervidorEmpresa().getText());
+					cadastroEstudante.setCargoSupervEstagio(panelAtualizar.getFieldCargoSupervEmpresa().getText());
+					cadastroEstudante.setCepEstudante(panelAtualizar.getFieldCEP().getText());
+					cadastroEstudante.setCpfEstudante(panelAtualizar.getFieldCPFEst().getText());
+					cadastroEstudante.setRgEstudante(panelAtualizar.getFieldRGEst().getText());
+					cadastroEstudante.setCpfResp(panelAtualizar.getFieldCPFResp().getText());
+					cadastroEstudante.setRgResp(panelAtualizar.getFieldRGResp().getText());
+					cadastroEstudante.setMatricEstudante(panelAtualizar.getFieldMatEst().getText());
+					cadastroEstudante.setCpfCoord(panelAtualizar.getFieldCPFCoord().getText());
+					cadastroEstudante.setRgCoord(panelAtualizar.getFieldRGCoord().getText());
+					cadastroEstudante.setDataInicialEstagio(panelAtualizar.getFieldDataInicial().getText());	
+					cadastroEstudante.setDataFinalEstagio(panelAtualizar.getFieldDataFinal().getText());
+					cadastroEstudante.setDataNascEstudante(panelAtualizar.getFieldNascEst().getText());
+					cadastroEstudante.setSemestEstudante(
+							Integer.parseInt(panelAtualizar.getComboBoxSemestre().getSelectedItem().toString()));
+					cadastroEstudante.setUfEstudante(panelAtualizar.getComboBoxUF().getSelectedItem().toString());
+					cadastroEstudante.setCursoEstudante(panelAtualizar.getComboBoxCursoEst().getSelectedIndex());
+					cadastroEstudante.setCursoCoord(panelAtualizar.getComboBoxCursoCoord().getSelectedIndex());
+					cadastroEstudante.setAtividadesEstagio(panelAtualizar.getTextArea().getText());
+					Calendar cal = Calendar.getInstance();
+					cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
+					
+//=============> função do dao para atualizar
 					
 				}else {
-					
+					JOptionPane.showMessageDialog(panelAtualizar, "Falha ao atualizar!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
 				}
-				
+	
 			}
 //			*Botão que busca um cadastro no banco			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
 				cadastroEstudante = new CadastroEstudante();
 				cadastroEstudante = dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText());
+				
+				flagBtnBuscarAcionado = true;
+				
 				panelAtualizar.getFieldNomeCoord().setText(cadastroEstudante.getNomeCoord());
 				panelAtualizar.getFieldNomeResp().setText(cadastroEstudante.getNomeResp());
 				panelAtualizar.getFieldNomeEst().setText(cadastroEstudante.getNomeEstudante());
@@ -293,6 +340,9 @@ public class Controle implements ActionListener {
 //			*Botão que limpa os dados existentes no formulário			
 			Object comando = e.getSource();
 			if(comando.equals(panelAtualizar.getBtnLimparAtual())) {
+				
+				flagBtnLimparFormAcionado = true;
+				
 				panelAtualizar.getFieldNomeCoord().setText("");
 				panelAtualizar.getFieldNomeResp().setText("");
 				panelAtualizar.getFieldNomeEst().setText("");
