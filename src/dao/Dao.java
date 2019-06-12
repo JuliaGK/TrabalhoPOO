@@ -74,7 +74,7 @@ public class Dao {
 		
 	}
 	
-	public void excluirFormulario(String cpfAluno) {
+	public boolean excluirFormulario(String cpfAluno) {
 		
 		Connection con = ConexaoMySQL.getConexao();
 		
@@ -87,20 +87,21 @@ public class Dao {
 			
 			prep.executeUpdate();
 			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		}
 		
-		
+		return true;
 	}
 	
 	public CadastroEstudante consultarFormulario (String cpfAluno) {

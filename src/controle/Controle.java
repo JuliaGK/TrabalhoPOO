@@ -265,6 +265,7 @@ public class Controle implements ActionListener {
 					dao.registrarFormulario(cadastroEstudante);
 					JOptionPane.showMessageDialog(panelNovo, "Cadastrado com sucesso!");
 				}
+			}
 		}
 		
 //		+++Funcionalidades do painel de atualização
@@ -516,7 +517,15 @@ public class Controle implements ActionListener {
 		if(framePrincipal.getContentPane() == panelExcluir) {
 //			*Botão excluir
 			if(e.getActionCommand().equalsIgnoreCase("Excluir")) {
-				dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
+				
+				if(dao.excluirFormulario(panelExcluir.getFormattedTextField().getText())) {
+					dao.excluirFormulario(panelExcluir.getFormattedTextField().getText());
+					JOptionPane.showMessageDialog(panelExcluir, "Excluido com sucesso!");
+				}else {
+					JOptionPane.showMessageDialog(panelExcluir, "Erro ao excluir!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 //			*Botão limpar busca
 			if(e.getActionCommand().equalsIgnoreCase("Limpar")) {
