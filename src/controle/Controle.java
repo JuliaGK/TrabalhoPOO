@@ -236,9 +236,8 @@ public class Controle implements ActionListener {
 				cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
 				cadastroEstudante.setAtividadesEstagio(panelNovo.getTextArea().getText());
 				Calendar cal = Calendar.getInstance();
-				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
+				cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));			
 				
-				dao.registrarFormulario(cadastroEstudante);
 			}
 		}
 		
@@ -288,6 +287,8 @@ public class Controle implements ActionListener {
 					cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
 					
 //=============> função do dao para atualizar
+					
+					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro atualizado com sucesso!");
 					
 				}else {
 					JOptionPane.showMessageDialog(panelAtualizar, "Falha ao atualizar!", "Erro",
