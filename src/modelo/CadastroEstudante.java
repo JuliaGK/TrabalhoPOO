@@ -1,7 +1,5 @@
 package modelo;
 
-import java.sql.Date;
-
 public class CadastroEstudante {
 	
 	private String cpfEstudante; //cpfEstudanteFormulario` VARCHAR(11) NULL
@@ -13,7 +11,7 @@ public class CadastroEstudante {
 	private String cidadeEstudante; //cidadeEstudanteFormulario` VARCHAR(100) NULL
 	private int cursoEstudante; //JComboBox //idCursoEstudante` INT NOT NULL
 	private int semestEstudante; //JComboBox //semestreEstudanteFormulario` INT NULL
-	private Date dataNascEstudante; //nascimentoEstudanteFormulario` DATE NULL
+	private String dataNascEstudante; //nascimentoEstudanteFormulario` DATE NULL
 	private String complemEstudante; // complementoEstudanteFormulario` VARCHAR(45) NULL
 	private String cepEstudante; //cepEstudanteFormulario` VARCHAR(45) NULL
 	private String ufEstudante; //JComboBox //ufEstudanteFormulario` VARCHAR(45) NULL
@@ -30,11 +28,11 @@ public class CadastroEstudante {
 	private String cargoResp; //cargoResponsavelFormulario` VARCHAR(45) NULL
 	
 	private String areaAtuacaoEstagio; //areaEstagioFormulario` VARCHAR(45) NULL
-	private Date dataInicialEstagio; // inicioEstagioFormulario` DATE NULL
+	private String dataInicialEstagio; // inicioEstagioFormulario` DATE NULL
 	private String cargaHorariaEstagio; //cargaHorarioEstagioFormulario` VARCHAR(10) NULL
 	private String numApoliceSeguroEstagio; //numeroApoliceEstagioFormulario` VARCHAR(45) NULL
 	private String duracaoEstagio; //tempoEstagioFormulario` VARCHAR(45) NULL
-	private Date dataFinalEstagio; //finalEstagioFormulario` DATE NULL
+	private String dataFinalEstagio; //finalEstagioFormulario` DATE NULL
 	private String seguradoraEstagio; //seguradorEstagioFormulario` VARCHAR(45) NULL
 	private String supervEstagio; //supervisaoEstagioFormulario` VARCHAR(100) NULL
 	private String orientadorEstagio;//orientadorEstagioFormulario` VARCHAR(100) NULL
@@ -42,18 +40,18 @@ public class CadastroEstudante {
 	private String cargoSupervEstagio; //cargoOrientadorEstagioFormulario` VARCHAR(45) NULL
 	private String atividadesEstagio; //atividadesEstagioFormulario` TEXT NULL
 	
-	private Date dataPreenchimento; //dataPreenchimentoFormulario` DATE NULL
+	private String dataPreenchimento; //dataPreenchimentoFormulario` DATE NULL
 	
 	public CadastroEstudante() {}
 
 	public CadastroEstudante(String cpfEstudante, String nomeEstudante, String rgEstudante, String logradEstudante,
 			String enderecoEtudante, String bairroEstudante, String cidadeEstudante, int cursoEstudante,
-			int semestEstudante, Date dataNascEstudante, String complemEstudante, String cepEstudante,
+			int semestEstudante, String dataNascEstudante, String complemEstudante, String cepEstudante,
 			String ufEstudante, String matricEstudante, String nomeCoord, String cpfCoord, String rgCoord,
 			int cursoCoord, String nomeResp, String cpfResp, String rgResp, String cargoResp, String areaAtuacaoEstagio,
-			Date dataInicialEstagio, String cargaHorariaEstagio, String numApoliceSeguroEstagio, String duracaoEstagio,
-			Date dataFinalEstagio, String seguradoraEstagio, String supervEstagio, String orientadorEstagio,
-			String numSiapeEstagio, String cargoSupervEstagio, String atividadesEstagio, Date dataPreenchimento) {
+			String dataInicialEstagio, String cargaHorariaEstagio, String numApoliceSeguroEstagio, String duracaoEstagio,
+			String dataFinalEstagio, String seguradoraEstagio, String supervEstagio, String orientadorEstagio,
+			String numSiapeEstagio, String cargoSupervEstagio, String atividadesEstagio, String dataPreenchimento) {
 		super();
 		this.cpfEstudante = cpfEstudante;
 		this.nomeEstudante = nomeEstudante;
@@ -164,11 +162,11 @@ public class CadastroEstudante {
 		this.semestEstudante = semestEstudante;
 	}
 
-	public Date getDataNascEstudante() {
+	public String getDataNascEstudante() {
 		return dataNascEstudante;
 	}
 
-	public void setDataNascEstudante(Date dataNascEstudante) {
+	public void setDataNascEstudante(String dataNascEstudante) {
 		this.dataNascEstudante = dataNascEstudante;
 	}
 
@@ -276,11 +274,11 @@ public class CadastroEstudante {
 		this.areaAtuacaoEstagio = areaAtuacaoEstagio;
 	}
 
-	public Date getDataInicialEstagio() {
+	public String getDataInicialEstagio() {
 		return dataInicialEstagio;
 	}
 
-	public void setDataInicialEstagio(Date dataInicialEstagio) {
+	public void setDataInicialEstagio(String dataInicialEstagio) {
 		this.dataInicialEstagio = dataInicialEstagio;
 	}
 
@@ -308,11 +306,11 @@ public class CadastroEstudante {
 		this.duracaoEstagio = duracaoEstagio;
 	}
 
-	public Date getDataFinalEstagio() {
+	public String getDataFinalEstagio() {
 		return dataFinalEstagio;
 	}
 
-	public void setDataFinalEstagio(Date dataFinalEstagio) {
+	public void setDataFinalEstagio(String dataFinalEstagio) {
 		this.dataFinalEstagio = dataFinalEstagio;
 	}
 
@@ -364,12 +362,30 @@ public class CadastroEstudante {
 		this.atividadesEstagio = atividadesEstagio;
 	}
 
-	public Date getDataPreenchimento() {
+	public String getDataPreenchimento() {
 		return dataPreenchimento;
 	}
 
-	public void setDataPreenchimento(Date dataPreenchimento) {
+	public void setDataPreenchimento(String dataPreenchimento) {
 		this.dataPreenchimento = dataPreenchimento;
+	}
+
+	@Override
+	public String toString() {
+		return "CadastroEstudante [cpfEstudante=" + cpfEstudante + ", nomeEstudante=" + nomeEstudante + ", rgEstudante="
+				+ rgEstudante + ", logradEstudante=" + logradEstudante + ", enderecoEtudante=" + enderecoEtudante
+				+ ", bairroEstudante=" + bairroEstudante + ", cidadeEstudante=" + cidadeEstudante + ", cursoEstudante="
+				+ cursoEstudante + ", semestEstudante=" + semestEstudante + ", dataNascEstudante=" + dataNascEstudante
+				+ ", complemEstudante=" + complemEstudante + ", cepEstudante=" + cepEstudante + ", ufEstudante="
+				+ ufEstudante + ", matricEstudante=" + matricEstudante + ", nomeCoord=" + nomeCoord + ", cpfCoord="
+				+ cpfCoord + ", rgCoord=" + rgCoord + ", cursoCoord=" + cursoCoord + ", nomeResp=" + nomeResp
+				+ ", cpfResp=" + cpfResp + ", rgResp=" + rgResp + ", cargoResp=" + cargoResp + ", areaAtuacaoEstagio="
+				+ areaAtuacaoEstagio + ", dataInicialEstagio=" + dataInicialEstagio + ", cargaHorariaEstagio="
+				+ cargaHorariaEstagio + ", numApoliceSeguroEstagio=" + numApoliceSeguroEstagio + ", duracaoEstagio="
+				+ duracaoEstagio + ", dataFinalEstagio=" + dataFinalEstagio + ", seguradoraEstagio=" + seguradoraEstagio
+				+ ", supervEstagio=" + supervEstagio + ", orientadorEstagio=" + orientadorEstagio + ", numSiapeEstagio="
+				+ numSiapeEstagio + ", cargoSupervEstagio=" + cargoSupervEstagio + ", atividadesEstagio="
+				+ atividadesEstagio + ", dataPreenchimento=" + dataPreenchimento + "]";
 	}
 	
 	

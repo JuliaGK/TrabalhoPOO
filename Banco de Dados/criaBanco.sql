@@ -5,7 +5,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 -- -----------------------------------------------------
 -- Schema mydb
@@ -47,20 +47,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Formularios` (
   `nomeProfessorFormulario` VARCHAR(100) NULL,
   `idCursoCoordenador` INT NOT NULL,
   `rgProfessorFormulario` VARCHAR(45) NULL,
-  `cpfProfessorFormulario` VARCHAR(11) NULL,
+  `cpfProfessorFormulario` VARCHAR(14) NULL,
   `cargoResponsavelFormulario` VARCHAR(45) NULL,
   `nomeResponsavelFormulario` VARCHAR(100) NULL,
   `rgResponsavelFormulario` VARCHAR(45) NULL,
-  `cpfResponsavelFormulario` VARCHAR(11) NULL,
+  `cpfResponsavelFormulario` VARCHAR(14) NULL,
   `nomeEstudanteFormulario` VARCHAR(100) NULL,
-  `nascimentoEstudanteFormulario` DATE NULL,
-  `cpfEstudanteFormulario` VARCHAR(11) NULL,
+  `nascimentoEstudanteFormulario` VARCHAR(10) NULL,
+  `cpfEstudanteFormulario` VARCHAR(14) NULL,
   `rgEstudanteFormulario` VARCHAR(45) NULL,
   `logradouroEstudanteFormulario` VARCHAR(45) NULL,
   `enderecoEstudanteFormulario` VARCHAR(100) NULL,
   `complementoEstudanteFormulario` VARCHAR(45) NULL,
   `bairroEstudanteFormulario` VARCHAR(45) NULL,
-  `cepEstudanteFormulario` VARCHAR(45) NULL,
+  `cepEstudanteFormulario` VARCHAR(9) NULL,
   `cidadeEstudanteFormulario` VARCHAR(100) NULL,
   `ufEstudanteFormulario` VARCHAR(45) NULL,
   `idCursoEstudante` INT NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Formularios` (
   `semestreEstudanteFormulario` INT NULL,
   `areaEstagioFormulario` VARCHAR(45) NULL,
   `tempoEstagioFormulario` VARCHAR(45) NULL,
-  `inicioEstagioFormulario` DATE NULL,
-  `finalEstagioFormulario` DATE NULL,
+  `inicioEstagioFormulario` VARCHAR(10) NULL,
+  `finalEstagioFormulario` VARCHAR(10) NULL,
   `cargaHorarioEstagioFormulario` VARCHAR(10) NULL,
   `numeroApoliceEstagioFormulario` VARCHAR(45) NULL,
   `seguradorEstagioFormulario` VARCHAR(45) NULL,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Formularios` (
   `orientadorEstagioFormulario` VARCHAR(100) NULL,
   `cargoOrientadorEstagioFormulario` VARCHAR(45) NULL,
   `atividadesEstagioFormulario` TEXT NULL,
-  `dataPreenchimentoFormulario` DATE NULL,
+  `dataPreenchimentoFormulario` VARCHAR(10) NULL,
   PRIMARY KEY (`idFormulario`),
   INDEX `fk_Formularios_Cursos_idx` (`idCursoCoordenador` ASC),
   INDEX `fk_Formularios_Cursos1_idx` (`idCursoEstudante` ASC),

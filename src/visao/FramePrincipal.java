@@ -44,8 +44,8 @@ public class FramePrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public FramePrincipal() {
-		setTitle("Formul\u00E1rio Derca");
 		setResizable(false);
+		setTitle("Formul\u00E1rio Derca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 495);
 		contentPane = new JPanel();

@@ -57,7 +57,7 @@ public class PanelBuscar extends JPanel {
 	private JFormattedTextField FieldDataFinal;
 	private JComboBox comboBoxSemestre;
 	private JFormattedTextField FieldMatEst;
-	private JComboBox comboBoxCursoEst;
+	private JComboBox<String> comboBoxCursoEst;
 	private JComboBox comboBoxUF;
 	private JFormattedTextField FieldCEP;
 	private JFormattedTextField FieldCPFEst;
@@ -65,7 +65,7 @@ public class PanelBuscar extends JPanel {
 	private JFormattedTextField FieldNascEst;
 	private JFormattedTextField FieldCPFResp;
 	private JFormattedTextField FieldRGResp;
-	private JComboBox comboBoxCursoCoord;
+	private JComboBox<String> comboBoxCursoCoord;
 	private JFormattedTextField FieldCPFCoord;
 	private JFormattedTextField FieldRGCoord;
 	private JButton btnBuscar;
@@ -439,6 +439,48 @@ public class PanelBuscar extends JPanel {
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(PanelBuscar.class.getResource("/imagens/close-button.png")));
 		add(btnLimpar, "cell 1 5");
+		
+		comboBoxUF.addItem("Selecionar Opção");
+		comboBoxUF.addItem("Acre");
+		comboBoxUF.addItem("Amapá");
+		comboBoxUF.addItem("Amazonas");
+		comboBoxUF.addItem("Bahia");
+		comboBoxUF.addItem("Ceará");
+		comboBoxUF.addItem("Distrito Federal");
+		comboBoxUF.addItem("Espírito Santo");
+		comboBoxUF.addItem("Goiás");
+		comboBoxUF.addItem("Maranhão");
+		comboBoxUF.addItem("Mato Grosso");
+		comboBoxUF.addItem("Mato Grosso do Sul");
+		comboBoxUF.addItem("Minas Gerais");
+		comboBoxUF.addItem("Pará");
+		comboBoxUF.addItem("Paraíba");
+		comboBoxUF.addItem("Paraná");
+		comboBoxUF.addItem("Pernambuco");
+		comboBoxUF.addItem("Piauí");
+		comboBoxUF.addItem("Rio de Janeiro");
+		comboBoxUF.addItem("Rio Grande do Norte");
+		comboBoxUF.addItem("Rio Grande do Sul");
+		comboBoxUF.addItem("Rondônia");
+		comboBoxUF.addItem("Roraima");
+		comboBoxUF.addItem("Santa Catarina");
+		comboBoxUF.addItem("São Paulo");
+		comboBoxUF.addItem("Sergipe");
+		comboBoxUF.addItem("Tocantins");
+		
+		comboBoxSemestre.addItem("Selecionar Opção");
+		comboBoxSemestre.addItem("1");
+		comboBoxSemestre.addItem("2");
+		comboBoxSemestre.addItem("3");
+		comboBoxSemestre.addItem("4");
+		comboBoxSemestre.addItem("5");
+		comboBoxSemestre.addItem("6");
+		comboBoxSemestre.addItem("7");
+		comboBoxSemestre.addItem("8");
+		comboBoxSemestre.addItem("9");
+		comboBoxSemestre.addItem("10");
+		comboBoxSemestre.addItem("11");
+		comboBoxSemestre.addItem("12");
 
 	}
 
@@ -706,11 +748,11 @@ public class PanelBuscar extends JPanel {
 		FieldMatEst = fieldMatEst;
 	}
 
-	public JComboBox getComboBoxCursoEst() {
+	public JComboBox<String> getComboBoxCursoEst() {
 		return comboBoxCursoEst;
 	}
 
-	public void setComboBoxCursoEst(JComboBox comboBoxCursoEst) {
+	public void setComboBoxCursoEst(JComboBox<String> comboBoxCursoEst) {
 		this.comboBoxCursoEst = comboBoxCursoEst;
 	}
 
@@ -770,11 +812,11 @@ public class PanelBuscar extends JPanel {
 		FieldRGResp = fieldRGResp;
 	}
 
-	public JComboBox getComboBoxCursoCoord() {
+	public JComboBox<String> getComboBoxCursoCoord() {
 		return comboBoxCursoCoord;
 	}
 
-	public void setComboBoxCursoCoord(JComboBox comboBoxCursoCoord) {
+	public void setComboBoxCursoCoord(JComboBox<String> comboBoxCursoCoord) {
 		this.comboBoxCursoCoord = comboBoxCursoCoord;
 	}
 

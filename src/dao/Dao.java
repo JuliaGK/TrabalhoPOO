@@ -30,7 +30,7 @@ public class Dao {
 			prep.setString(7, form.getRgResp());
 			prep.setString(8, form.getCpfResp());
 			prep.setString(9, form.getNomeEstudante());
-			prep.setDate(10, form.getDataNascEstudante());
+			prep.setString(10, form.getDataNascEstudante());
 			prep.setString(11, form.getCpfEstudante());
 			prep.setString(12, form.getRgEstudante());
 			prep.setString(13, form.getLogradEstudante());
@@ -45,8 +45,8 @@ public class Dao {
 			prep.setInt(22, form.getSemestEstudante());
 			prep.setString(23, form.getAreaAtuacaoEstagio());
 			prep.setString(24, form.getDuracaoEstagio());
-			prep.setDate(25, form.getDataInicialEstagio());
-			prep.setDate(26, form.getDataFinalEstagio());
+			prep.setString(25, form.getDataInicialEstagio());
+			prep.setString(26, form.getDataFinalEstagio());
 			prep.setString(27, form.getCargaHorariaEstagio());
 			prep.setString(28, form.getNumApoliceSeguroEstagio());
 			prep.setString(29, form.getSeguradoraEstagio());
@@ -55,9 +55,10 @@ public class Dao {
 			prep.setString(32, form.getOrientadorEstagio());
 			prep.setString(33, form.getCargoSupervEstagio());
 			prep.setString(34, form.getAtividadesEstagio());
-			prep.setDate(35, form.getDataPreenchimento());
+			prep.setString(35, form.getDataPreenchimento());
 			
 			prep.executeUpdate();
+			System.out.println("Cadastro efetuado");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -73,7 +74,7 @@ public class Dao {
 		
 	}
 	
-	public void excluirFormulario(String cpfAluno) {
+	public boolean excluirFormulario(String cpfAluno) {
 		
 		Connection con = ConexaoMySQL.getConexao();
 		
@@ -86,20 +87,21 @@ public class Dao {
 			
 			prep.executeUpdate();
 			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}finally {
 			try {
 				con.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		}
 		
-		
+		return true;
 	}
 	
 	public CadastroEstudante consultarFormulario (String cpfAluno) {
@@ -128,7 +130,7 @@ public class Dao {
 				form.setRgResp(rs.getString(8));
 				form.setCpfResp(rs.getString(9));
 				form.setNomeEstudante(rs.getString(10));
-				form.setDataNascEstudante(rs.getDate(11));
+				form.setDataNascEstudante(rs.getString(11));
 				form.setCpfEstudante(rs.getString(12));
 				form.setRgEstudante(rs.getString(13));
 				form.setLogradEstudante(rs.getString(14));
@@ -143,8 +145,8 @@ public class Dao {
 				form.setSemestEstudante(rs.getInt(23));
 				form.setAreaAtuacaoEstagio(rs.getString(24));
 				form.setDuracaoEstagio(rs.getString(25));
-				form.setDataInicialEstagio(rs.getDate(26));
-				form.setDataFinalEstagio(rs.getDate(27));
+				form.setDataInicialEstagio(rs.getString(26));
+				form.setDataFinalEstagio(rs.getString(27));
 				form.setCargaHorariaEstagio(rs.getString(28));
 				form.setNumApoliceSeguroEstagio(rs.getString(29));
 				form.setSeguradoraEstagio(rs.getString(30));
@@ -153,7 +155,7 @@ public class Dao {
 				form.setOrientadorEstagio(rs.getString(33));
 				form.setCargoSupervEstagio(rs.getString(34));
 				form.setAtividadesEstagio(rs.getString(35));
-				form.setDataPreenchimento(rs.getDate(36));
+				form.setDataPreenchimento(rs.getString(36));
 			}
 			
 			

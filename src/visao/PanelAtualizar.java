@@ -53,9 +53,10 @@ public class PanelAtualizar extends JPanel {
 	private JTextArea textArea;
 	private MaskFormatter CPFBuscar;
 	private JFormattedTextField FieldDataFinal;
+	private JFormattedTextField FieldCEP;
 	private JFormattedTextField FieldCPFBusca;
 	private JButton btnBuscar;
-	private JComboBox comboBoxCursoCoord;
+	private JComboBox<String> comboBoxCursoCoord;
 	private JFormattedTextField FieldNascEst;
 	private JFormattedTextField FieldRGCoord;
 	private JFormattedTextField FieldCPFCoord;
@@ -64,7 +65,7 @@ public class PanelAtualizar extends JPanel {
 	private JFormattedTextField FieldRGEst;
 	private JFormattedTextField FieldCPFEst;
 	private JComboBox comboBoxUF;
-	private JComboBox comboBoxCursoEst;
+	private JComboBox<String> comboBoxCursoEst;
 	private JFormattedTextField FieldMatEst;
 	private JComboBox comboBoxSemestre;
 	private JFormattedTextField FieldDataInicial;
@@ -156,9 +157,9 @@ public class PanelAtualizar extends JPanel {
 		lblDadosConcedente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add(lblDadosConcedente, "cell 0 14 5 1,alignx center");
 
-		JLabel lblResponsávelEmpresa = new JLabel("Nome Respons\u00E1vel");
-		lblResponsávelEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblResponsávelEmpresa, "flowx,cell 0 15");
+		JLabel lblResponsï¿½velEmpresa = new JLabel("Nome Respons\u00E1vel");
+		lblResponsï¿½velEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		add(lblResponsï¿½velEmpresa, "flowx,cell 0 15");
 
 		FieldNomeResp = new JTextField();
 		add(FieldNomeResp, "cell 1 15,growx");
@@ -284,7 +285,7 @@ public class PanelAtualizar extends JPanel {
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblCep, "cell 3 22");
-		JFormattedTextField FieldCEP = new JFormattedTextField(CEPEst);
+		FieldCEP = new JFormattedTextField(CEPEst);
 		add(FieldCEP, "cell 4 22,growx");
 
 		JLabel lblCidade = new JLabel("Cidade");
@@ -699,11 +700,11 @@ public class PanelAtualizar extends JPanel {
 		this.btnBuscar = btnBuscar;
 	}
 
-	public JComboBox getComboBoxCursoCoord() {
+	public JComboBox<String> getComboBoxCursoCoord() {
 		return comboBoxCursoCoord;
 	}
 
-	public void setComboBoxCursoCoord(JComboBox comboBoxCursoCoord) {
+	public void setComboBoxCursoCoord(JComboBox<String> comboBoxCursoCoord) {
 		this.comboBoxCursoCoord = comboBoxCursoCoord;
 	}
 
@@ -771,11 +772,11 @@ public class PanelAtualizar extends JPanel {
 		this.comboBoxUF = comboBoxUF;
 	}
 
-	public JComboBox getComboBoxCursoEst() {
+	public JComboBox<String> getComboBoxCursoEst() {
 		return comboBoxCursoEst;
 	}
 
-	public void setComboBoxCursoEst(JComboBox comboBoxCursoEst) {
+	public void setComboBoxCursoEst(JComboBox<String> comboBoxCursoEst) {
 		this.comboBoxCursoEst = comboBoxCursoEst;
 	}
 
@@ -841,6 +842,14 @@ public class PanelAtualizar extends JPanel {
 
 	public void setDataFinal(MaskFormatter dataFinal) {
 		this.dataFinal = dataFinal;
+	}
+
+	public JFormattedTextField getFieldCEP() {
+		return FieldCEP;
+	}
+
+	public void setFieldCEP(JFormattedTextField fieldCEP) {
+		FieldCEP = fieldCEP;
 	}
 
 }
