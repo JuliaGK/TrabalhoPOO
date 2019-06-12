@@ -44,7 +44,9 @@ public class Controle implements ActionListener {
 
 	private boolean flagBtnBuscarAcionado = false;
 	private boolean flagBtnLimparFormAcionado = false;
-
+	
+	private String [] UFs = {"Selecionar Opção","Acre","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"};
+	
 	public Controle() {
 
 		framePrincipal = new FramePrincipal();
@@ -53,13 +55,14 @@ public class Controle implements ActionListener {
 
 		framePrincipal.setContentPane(panelLogin);
 		framePrincipal.setSize(panelLogin.getWidth(), panelLogin.getHeight());
-
+		framePrincipal.setLocationRelativeTo(null);
 		framePrincipal.setVisible(true);
 
 		panelLogin.getBtnLogin().addActionListener(this);
 		panelLogin.getBtnLimpar().addActionListener(this);
 		panelBuscar.getBtnBuscar().addActionListener(this);
 		panelBuscar.getBtnLimpar().addActionListener(this);
+		panelBuscar.getBtnVoltarMenu().addActionListener(this);
 		panelExcluir.getBtnExcluir().addActionListener(this);
 		panelExcluir.getBtnLimpar().addActionListener(this);
 		panelNovo.getBtnCadastrar().addActionListener(this);
@@ -68,11 +71,13 @@ public class Controle implements ActionListener {
 		panelAtualizar.getBtnBuscar().addActionListener(this);
 		panelAtualizar.getBtnLimpar().addActionListener(this);
 		panelAtualizar.getBtnLimparAtual().addActionListener(this);
-		
-		
+		panelAtualizar.getBtnVoltarMenu().addActionListener(this);
+
 		dao = new Dao();
 		listaCursos = dao.retornarTodosCursos();
-
+		
+		System.out.println("Panel Menu: " + panelLogin.getWidth() + " " + panelLogin.getHeight());
+		
 	}
 
 	@Override
@@ -114,7 +119,8 @@ public class Controle implements ActionListener {
 					panelMenu.getMntmExcluirFormulrio().addActionListener(this);
 
 					framePrincipal.setContentPane(panelMenu);
-					framePrincipal.setSize(framePrincipal.getWidth() + 1, framePrincipal.getHeight() + 1);
+					framePrincipal.setSize(374, 461);
+					framePrincipal.repaint();
 				} else {
 					JOptionPane.showMessageDialog(panelLogin, "Falha ao realizar login!", "Erro",
 							JOptionPane.ERROR_MESSAGE);
@@ -135,11 +141,13 @@ public class Controle implements ActionListener {
 			if (e.getActionCommand().equals("Novo Formul\u00E1rio")) {
 				// Da acesso ao panel para novo formulario
 				framePrincipal.setContentPane(panelNovo);
+				framePrincipal.setLocationRelativeTo(null);
 				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
 
 				addCursosComboBox(panelNovo.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelNovo.getComboBoxCursoEst(), listaCursos);
-
+				
+				
 				panelNovo.getBtnCadastrar().addActionListener(this);
 				panelNovo.getBtnLimpar().addActionListener(this);
 			}
@@ -150,16 +158,18 @@ public class Controle implements ActionListener {
 			
 			if (e.getActionCommand().equals("Atualizar  Formul\u00E1rio")) {
 				// Da acesso ao panel para atualizar
-				framePrincipal.setContentPane(panelAtualizar);
 				framePrincipal.setSize(panelAtualizar.getWidth(), panelAtualizar.getHeight());
-				//framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+				framePrincipal.setContentPane(panelAtualizar);
+				framePrincipal.setLocationRelativeTo(null);
+				
 				addCursosComboBox(panelAtualizar.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelAtualizar.getComboBoxCursoEst(), listaCursos);
+				
+				for(int i = 0; i < 27; i++){
+					System.out.println(UFs[i]);
+					panelAtualizar.getComboBoxCursoEst().addItem(UFs[i]);
+				}
 
-				panelAtualizar.getBtnAtualizar().addActionListener(this);
-				panelAtualizar.getBtnBuscar().addActionListener(this);
-				panelAtualizar.getBtnLimpar().addActionListener(this);
-				panelAtualizar.getBtnLimparAtual().addActionListener(this);
 			}
 
 			/**
@@ -169,12 +179,11 @@ public class Controle implements ActionListener {
 			if (e.getActionCommand().equals("Buscar Formul\u00E1rio")) {
 				// Da acesso ao panel para buscar
 				framePrincipal.setContentPane(panelBuscar);
-				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH); // deixa fullscreen
+				framePrincipal.setExtendedState(framePrincipal.MAXIMIZED_BOTH);// deixa fullscreen
+				framePrincipal.setLocationRelativeTo(null);
 				addCursosComboBox(panelBuscar.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelBuscar.getComboBoxCursoEst(), listaCursos);
 
-				panelBuscar.getBtnBuscar().addActionListener(this);
-				panelBuscar.getBtnLimpar().addActionListener(this);
 			}
 
 			/**
@@ -185,9 +194,7 @@ public class Controle implements ActionListener {
 				// Da acesso ao panel para excluir
 				framePrincipal.setContentPane(panelExcluir);
 				framePrincipal.setSize(360, 180);
-
-				panelExcluir.getBtnExcluir().addActionListener(this);
-				panelExcluir.getBtnLimpar().addActionListener(this);
+				framePrincipal.setLocationRelativeTo(null);
 
 			}
 
@@ -319,7 +326,9 @@ public class Controle implements ActionListener {
 		 */
 		
 		if(framePrincipal.getContentPane() == panelAtualizar) {
-
+			
+			framePrincipal.setContentPane(panelAtualizar);
+			framePrincipal.setSize(800,800);
 			/**
 			 * Acao do botao Atualizar
 			 */
@@ -621,6 +630,13 @@ public class Controle implements ActionListener {
 				panelExcluir.getFormattedTextField().setText("");
 				
 			}
+			
+		}
+		
+		if(e.getActionCommand().equals("Voltar")){
+			framePrincipal.setSize(374, 461);
+			framePrincipal.setContentPane(panelMenu);
+			framePrincipal.setLocationRelativeTo(null);
 			
 		}
 

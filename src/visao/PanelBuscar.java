@@ -72,7 +72,8 @@ public class PanelBuscar extends JPanel {
 	private JFormattedTextField FieldCPFBusca;
 	private MaskFormatter dataIni;
 	private MaskFormatter dataFinal;
-
+	private JButton btnVoltarMenu;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -481,7 +482,18 @@ public class PanelBuscar extends JPanel {
 		comboBoxSemestre.addItem("10");
 		comboBoxSemestre.addItem("11");
 		comboBoxSemestre.addItem("12");
+		
+		btnVoltarMenu = new JButton("Voltar");
+		add(btnVoltarMenu, "cell 1 5");
 
+	}
+
+	public JButton getBtnVoltarMenu() {
+		return btnVoltarMenu;
+	}
+
+	public void setBtnVoltarMenu(JButton btnVoltarMenu) {
+		this.btnVoltarMenu = btnVoltarMenu;
 	}
 
 	public JTextField getFieldNomeCoord() {

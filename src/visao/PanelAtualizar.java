@@ -74,6 +74,8 @@ public class PanelAtualizar extends JPanel {
 	private JButton btnLimpar;
 	private MaskFormatter dataIni;
 	private MaskFormatter dataFinal;
+	private JButton btnVoltarMenu;
+	
 
 	/**
 	 * Create the panel.
@@ -450,6 +452,9 @@ public class PanelAtualizar extends JPanel {
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(PanelAtualizar.class.getResource("/imagens/close-button.png")));
 		add(btnLimpar, "cell 1 4");
+		
+		btnVoltarMenu = new JButton("Voltar");
+		add(btnVoltarMenu, "cell 1 37");
 	}
 
 	public JTextField getFieldNomeCoord() {
@@ -480,6 +485,13 @@ public class PanelAtualizar extends JPanel {
 		return CPFResp;
 	}
 
+	public JButton getBtnVoltarMenu() {
+		return btnVoltarMenu;
+	}
+	
+	public void setBtnVoltarMenu(JButton btnVoltarMenu) {
+		this.btnVoltarMenu = btnVoltarMenu;
+	}
 	public void setCPFResp(MaskFormatter cPFResp) {
 		CPFResp = cPFResp;
 	}
