@@ -19,13 +19,12 @@ public class ConexaoMySQL {
 		String database = "mydb";
 		String user = "root";
 		String password = "123456";
-		String url = "jdbc:mysql://"+servername+":3306/"+database;
+		String url = "jdbc:mysql://"+servername+":3306/"+database+"?useSSL=false";
 		
 		try {
 			con=DriverManager.getConnection(url, user, password);
 			if(con!=null){
 				status="STATUS: Conectado.";
-				System.out.println(status);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

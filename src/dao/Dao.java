@@ -127,7 +127,7 @@ public class Dao {
 		
 		Connection con = ConexaoMySQL.getConexao();
 		
-		String sql = "SELECT * FROM formularios WHERE cpfEstudanteFormulario LIKE ?";
+		String sql = "SELECT * FROM formularios WHERE cpfEstudanteFormulario = ?";
 		
 		try {
 			PreparedStatement prep = con.prepareStatement(sql);
@@ -136,8 +136,7 @@ public class Dao {
 			
 			ResultSet rs = prep.executeQuery();
 			
-			while(rs.next()){
-				
+			if(rs.next()) {
 				form.setNomeCoord(rs.getString(2));
 				form.setCursoCoord(rs.getInt(3));
 				form.setRgCoord(rs.getString(4));
@@ -173,12 +172,16 @@ public class Dao {
 				form.setCargoSupervEstagio(rs.getString(34));
 				form.setAtividadesEstagio(rs.getString(35));
 				form.setDataPreenchimento(rs.getString(36));
+			} else {
+				return null;
 			}
+			
 			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}finally {
 			try {
 				con.close();
@@ -304,7 +307,17 @@ public class Dao {
 		
 	}
 	
-	public boolean atualizar() {
-		return true;
+	public boolean atualizar(String cpfAluno, CadastroEstudante novoFormulario) {
+		
+		if(consultarFormulario(cpfAluno)!=null) {
+			
+			excluirFormulario(cpfAluno);
+			registrarFormulario(novoFormulario);
+			
+			return true;
+			
+		}
+		
+		return false;
 	}
 }

@@ -24,6 +24,7 @@ public class PanelExcluir extends JPanel {
 	private JButton btnExcluir;
 	private JButton btnLimpar;
 	private MaskFormatter CPFExcluir;
+	private JButton btnVoltarMenu;
 
 	/**
 	 * Create the panel.
@@ -55,8 +56,25 @@ public class PanelExcluir extends JPanel {
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(PanelExcluir.class.getResource("/imagens/close-button.png")));
 		add(btnLimpar, "cell 1 4,alignx right");
+		
+		btnVoltarMenu = new JButton("Voltar");
+		add(btnVoltarMenu, "cell 1 4");
 
 	}
+	
+	
+	
+	public JButton getBtnVoltarMenu() {
+		return btnVoltarMenu;
+	}
+
+
+
+	public void setBtnVoltarMenu(JButton btnVoltarMenu) {
+		this.btnVoltarMenu = btnVoltarMenu;
+	}
+
+
 
 	public MaskFormatter getCPFExc() {
 		return CPFExcluir;

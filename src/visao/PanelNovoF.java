@@ -69,23 +69,25 @@ public class PanelNovoF extends JPanel {
 	private JFormattedTextField FieldCPFBusca;
 	private MaskFormatter dataIni;
 	private MaskFormatter dataFinal;
-
+	private JButton btnVoltarMenu;
+	
+	
+	
 	/**
 	 * Create the panel.
 	 */
 	public PanelNovoF() {
 
 		setBackground(SystemColor.inactiveCaption);
-		setLayout(new MigLayout("", "[90.00,grow][320.00,grow][15.00][90.00,grow][263.00,grow]",
-				"[5.00][][17.00][][][][][][][][][][][][][][][][][][][][][][][][][][][grow][100px][]"));
+		setLayout(new MigLayout("", "[90.00,grow][320.00,grow][][][15.00][90.00,grow][263.00,grow]", "[5.00][][17.00][][][][][][][][][][][][][][][][][][][][][][][][][][][grow][100px][]"));
 
 		JLabel lblNovoFormulrio = new JLabel("FORMUL\u00C1RIO DE TERMO DE COMPROMISSO DE EST\u00C1GIO");
 		lblNovoFormulrio.setFont(new Font("Tahoma", Font.BOLD, 16));
-		add(lblNovoFormulrio, "cell 0 1 5 1,alignx center");
+		add(lblNovoFormulrio, "cell 0 1 7 1,alignx center");
 
 		JLabel lblDadosUniversidade = new JLabel("DADOS DA UNIVERSIDADE");
 		lblDadosUniversidade.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(lblDadosUniversidade, "cell 0 3 5 1,alignx center");
+		add(lblDadosUniversidade, "cell 0 3 7 1,alignx center");
 
 		JLabel lblNomeCoordenador = new JLabel("Nome Coordenador(a)");
 		lblNomeCoordenador.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -111,9 +113,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblRgCoordenadora = new JLabel("RG Coordenador(a)");
 		lblRgCoordenadora.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblRgCoordenadora, "flowx,cell 3 4");
+		add(lblRgCoordenadora, "flowx,cell 5 4");
 		FieldRGCoord = new JFormattedTextField(RGCoord);
-		add(FieldRGCoord, "cell 4 4,growx");
+		add(FieldRGCoord, "cell 6 4,growx");
 
 		JLabel lblCpfCoordenadora = new JLabel("CPF Coordenador(a)");
 		lblCpfCoordenadora.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -123,14 +125,14 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblCursoCoord = new JLabel("Curso de Gradua\u00E7\u00E3o");
 		lblCursoCoord.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblCursoCoord, "cell 3 5");
+		add(lblCursoCoord, "cell 5 5");
 
 		comboBoxCursoCoord = new JComboBox<String>();
-		add(comboBoxCursoCoord, "cell 4 5");
+		add(comboBoxCursoCoord, "cell 6 5");
 
 		JLabel lblDadosConcedente = new JLabel("DADOS DA UNIDADE CONCEDENTE DE EST\u00C1GIO");
 		lblDadosConcedente.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(lblDadosConcedente, "cell 0 7 5 1,alignx center");
+		add(lblDadosConcedente, "cell 0 7 7 1,alignx center");
 
 		JLabel lblResponsávelEmpresa = new JLabel("Nome Respons\u00E1vel");
 		lblResponsávelEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -156,9 +158,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblRGResp = new JLabel("RG Respons\u00E1vel");
 		lblRGResp.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblRGResp, "cell 3 8");
+		add(lblRGResp, "cell 5 8");
 		FieldRGResp = new JFormattedTextField(RGResp);
-		add(FieldRGResp, "cell 4 8,growx");
+		add(FieldRGResp, "cell 6 8,growx");
 
 		JLabel lblCPFResp = new JLabel("CPF Respons\u00E1vel");
 		lblCPFResp.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -168,15 +170,15 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblCargoResponsvel = new JLabel("Cargo Respons\u00E1vel");
 		lblCargoResponsvel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblCargoResponsvel, "flowx,cell 3 9");
+		add(lblCargoResponsvel, "flowx,cell 5 9");
 
 		FieldCargoResp = new JTextField();
-		add(FieldCargoResp, "cell 4 9,growx");
+		add(FieldCargoResp, "cell 6 9,growx");
 		FieldCargoResp.setColumns(10);
 
 		JLabel lblDadosDoEstudante = new JLabel("DADOS DO ESTUDANTE");
 		lblDadosDoEstudante.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(lblDadosDoEstudante, "cell 0 11 5 1,alignx center");
+		add(lblDadosDoEstudante, "cell 0 11 7 1,alignx center");
 
 		JLabel lblNomeEstudante = new JLabel("Nome Estudante");
 		lblNomeEstudante.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -195,9 +197,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
 		lblDataDeNascimento.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblDataDeNascimento, "cell 3 12,alignx left");
+		add(lblDataDeNascimento, "cell 5 12,alignx left");
 		FieldNascEst = new JFormattedTextField(NascEst);
-		add(FieldNascEst, "cell 4 12,growx");
+		add(FieldNascEst, "cell 6 12,growx");
 
 		JLabel lblRgEstudante = new JLabel("RG Estudante");
 		lblRgEstudante.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -221,9 +223,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblCpfEstudante = new JLabel("CPF Estudante");
 		lblCpfEstudante.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblCpfEstudante, "cell 3 13,alignx left");
+		add(lblCpfEstudante, "cell 5 13,alignx left");
 		FieldCPFEst = new JFormattedTextField(CPFEst);
-		add(FieldCPFEst, "cell 4 13,growx");
+		add(FieldCPFEst, "cell 6 13,growx");
 
 		JLabel lblEndereco = new JLabel("Endere\u00E7o");
 		lblEndereco.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -235,7 +237,7 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblComplemento = new JLabel("Complemento");
 		lblComplemento.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblComplemento, "cell 3 14");
+		add(lblComplemento, "cell 5 14");
 
 		try {
 			CEPEst = new MaskFormatter("#####-###");
@@ -245,7 +247,7 @@ public class PanelNovoF extends JPanel {
 		}
 
 		FieldComplemento = new JTextField();
-		add(FieldComplemento, "cell 4 14,growx");
+		add(FieldComplemento, "cell 6 14,growx");
 		FieldComplemento.setColumns(10);
 
 		JLabel lblBairro = new JLabel("Bairro");
@@ -258,9 +260,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblCep, "cell 3 15");
+		add(lblCep, "cell 5 15");
 		FieldCEP = new JFormattedTextField(CEPEst);
-		add(FieldCEP, "cell 4 15,growx");
+		add(FieldCEP, "cell 6 15,growx");
 
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -272,10 +274,10 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblUf = new JLabel("UF");
 		lblUf.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblUf, "cell 3 16");
+		add(lblUf, "cell 5 16");
 
 		comboBoxUF = new JComboBox();
-		add(comboBoxUF, "cell 4 16");
+		add(comboBoxUF, "cell 6 16");
 		comboBoxUF.addItem("Selecionar Opção");
 		comboBoxUF.addItem("Acre");
 		comboBoxUF.addItem("Amapá");
@@ -320,9 +322,9 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblMatricula = new JLabel("Matr\u00EDcula Estudante");
 		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblMatricula, "cell 3 17");
+		add(lblMatricula, "cell 5 17");
 		FieldMatEst = new JFormattedTextField(MatEst);
-		add(FieldMatEst, "cell 4 17,growx");
+		add(FieldMatEst, "cell 6 17,growx");
 
 		JLabel lblSemestre = new JLabel("Semestre");
 		lblSemestre.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -346,7 +348,7 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblDadosDoEstgio = new JLabel("DADOS DO EST\u00C1GIO");
 		lblDadosDoEstgio.setFont(new Font("Tahoma", Font.BOLD, 14));
-		add(lblDadosDoEstgio, "cell 0 20 5 1,alignx center");
+		add(lblDadosDoEstgio, "cell 0 20 7 1,alignx center");
 
 		JLabel lblAreaDoEstgio = new JLabel("\u00C1rea de Atua\u00E7\u00E3o");
 		lblAreaDoEstgio.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -358,10 +360,10 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblDuracao = new JLabel("Dura\u00E7\u00E3o ");
 		lblDuracao.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblDuracao, "cell 3 21");
+		add(lblDuracao, "cell 5 21");
 
 		FieldDuracaoEstag = new JTextField();
-		add(FieldDuracaoEstag, "cell 4 21,growx");
+		add(FieldDuracaoEstag, "cell 6 21,growx");
 		FieldDuracaoEstag.setColumns(10);
 
 		JLabel lblDataInicial = new JLabel("Data Inicial");
@@ -378,7 +380,7 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblDataFinal = new JLabel("Data Final");
 		lblDataFinal.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblDataFinal, "cell 3 22");
+		add(lblDataFinal, "cell 5 22");
 		try {
 			dataFinal = new MaskFormatter("##/##/####");
 		} catch (ParseException e) {
@@ -386,7 +388,7 @@ public class PanelNovoF extends JPanel {
 			e.printStackTrace();
 		}
 		FieldDataFinal = new JFormattedTextField(dataFinal);
-		add(FieldDataFinal, "cell 4 22,growx");
+		add(FieldDataFinal, "cell 6 22,growx");
 
 		JLabel lblCargaHorriaSemanal = new JLabel("Carga Hor\u00E1ria Semanal");
 		lblCargaHorriaSemanal.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -406,10 +408,10 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblSeguradora = new JLabel("Seguradora");
 		lblSeguradora.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblSeguradora, "cell 3 24");
+		add(lblSeguradora, "cell 5 24");
 
 		FieldSeguradora = new JTextField();
-		add(FieldSeguradora, "cell 4 24,growx");
+		add(FieldSeguradora, "cell 6 24,growx");
 		FieldSeguradora.setColumns(10);
 
 		JLabel lblProfessoraResponsvel = new JLabel("Professor(a) Respons\u00E1vel");
@@ -421,10 +423,10 @@ public class PanelNovoF extends JPanel {
 		FieldProfResp.setColumns(10);
 
 		JLabel lblNSiape = new JLabel("N\u00BA SIAPE");
-		add(lblNSiape, "cell 3 26");
+		add(lblNSiape, "cell 5 26");
 
 		FieldSIAPE = new JTextField();
-		add(FieldSIAPE, "cell 4 26,growx");
+		add(FieldSIAPE, "cell 6 26,growx");
 		FieldSIAPE.setColumns(10);
 
 		JLabel lblSupervidorResponsvelempresa = new JLabel("Supervisor(a) (empresa)");
@@ -437,10 +439,10 @@ public class PanelNovoF extends JPanel {
 
 		JLabel lblCargoDoSupervidor = new JLabel("Cargo do(a) Supervidor(a)");
 		lblCargoDoSupervidor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(lblCargoDoSupervidor, "cell 3 27");
+		add(lblCargoDoSupervidor, "cell 5 27");
 
 		FieldCargoSupervEmpresa = new JTextField();
-		add(FieldCargoSupervEmpresa, "cell 4 27,growx");
+		add(FieldCargoSupervEmpresa, "cell 6 27,growx");
 		FieldCargoSupervEmpresa.setColumns(10);
 
 		JLabel lblAtividadesDesenvolvidasPelo = new JLabel("Atividades desenvolvidas pelo estagi\u00E1rio");
@@ -448,7 +450,7 @@ public class PanelNovoF extends JPanel {
 		add(lblAtividadesDesenvolvidasPelo, "cell 0 28 2 1");
 
 		JScrollPane scrollPane = new JScrollPane();
-		add(scrollPane, "cell 0 29 5 2,grow");
+		add(scrollPane, "cell 0 29 7 2,grow");
 
 		textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
@@ -460,6 +462,9 @@ public class PanelNovoF extends JPanel {
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setIcon(new ImageIcon(PanelNovoF.class.getResource("/imagens/close-button.png")));
 		add(btnLimpar, "cell 1 31,alignx center");
+		
+		btnVoltarMenu = new JButton("Voltar");
+		add(btnVoltarMenu, "cell 1 31");
 
 	}
 
@@ -517,6 +522,14 @@ public class PanelNovoF extends JPanel {
 
 	public void setFieldNomeEst(JTextField fieldNomeEst) {
 		FieldNomeEst = fieldNomeEst;
+	}
+
+	public JButton getBtnVoltarMenu() {
+		return btnVoltarMenu;
+	}
+
+	public void setBtnVoltarMenu(JButton btnVoltarMenu) {
+		this.btnVoltarMenu = btnVoltarMenu;
 	}
 
 	public JTextField getFieldCargoResp() {

@@ -45,7 +45,6 @@ public class Controle implements ActionListener {
 	private boolean flagBtnBuscarAcionado = false;
 	private boolean flagBtnLimparFormAcionado = false;
 	
-	private String [] UFs = {"Selecionar Opção","Acre","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"};
 	
 	public Controle() {
 
@@ -65,8 +64,10 @@ public class Controle implements ActionListener {
 		panelBuscar.getBtnVoltarMenu().addActionListener(this);
 		panelExcluir.getBtnExcluir().addActionListener(this);
 		panelExcluir.getBtnLimpar().addActionListener(this);
+		panelExcluir.getBtnVoltarMenu().addActionListener(this);
 		panelNovo.getBtnCadastrar().addActionListener(this);
 		panelNovo.getBtnLimpar().addActionListener(this);
+		panelNovo.getBtnVoltarMenu().addActionListener(this);
 		panelAtualizar.getBtnAtualizar().addActionListener(this);
 		panelAtualizar.getBtnBuscar().addActionListener(this);
 		panelAtualizar.getBtnLimpar().addActionListener(this);
@@ -75,9 +76,7 @@ public class Controle implements ActionListener {
 
 		dao = new Dao();
 		listaCursos = dao.retornarTodosCursos();
-		
-		System.out.println("Panel Menu: " + panelLogin.getWidth() + " " + panelLogin.getHeight());
-		
+				
 	}
 
 	@Override
@@ -165,12 +164,9 @@ public class Controle implements ActionListener {
 				
 				addCursosComboBox(panelAtualizar.getComboBoxCursoCoord(), listaCursos);
 				addCursosComboBox(panelAtualizar.getComboBoxCursoEst(), listaCursos);
+				addUFsComboBox(panelAtualizar.getComboBoxUF());
+				addSemestresComboBox(panelAtualizar.getComboBoxSemestre());
 				
-				for(int i = 0; i < 27; i++){
-					System.out.println(UFs[i]);
-					panelAtualizar.getComboBoxCursoEst().addItem(UFs[i]);
-				}
-
 			}
 
 			/**
@@ -307,7 +303,7 @@ public class Controle implements ActionListener {
 					cadastroEstudante.setDataFinalEstagio(panelNovo.getFieldDataFinal().getText());
 					cadastroEstudante.setDataNascEstudante(panelNovo.getFieldNascEst().getText());
 					cadastroEstudante.setSemestEstudante(
-							Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
+					Integer.parseInt(panelNovo.getComboBoxSemestre().getSelectedItem().toString()));
 					cadastroEstudante.setUfEstudante(panelNovo.getComboBoxUF().getSelectedItem().toString());
 					cadastroEstudante.setCursoEstudante(panelNovo.getComboBoxCursoEst().getSelectedIndex());
 					cadastroEstudante.setCursoCoord(panelNovo.getComboBoxCursoCoord().getSelectedIndex());
@@ -368,7 +364,7 @@ public class Controle implements ActionListener {
 					cadastroEstudante.setDataFinalEstagio(panelAtualizar.getFieldDataFinal().getText());
 					cadastroEstudante.setDataNascEstudante(panelAtualizar.getFieldNascEst().getText());
 					cadastroEstudante.setSemestEstudante(
-							Integer.parseInt(panelAtualizar.getComboBoxSemestre().getSelectedItem().toString()));
+					Integer.parseInt(panelAtualizar.getComboBoxSemestre().getSelectedItem().toString()));
 					cadastroEstudante.setUfEstudante(panelAtualizar.getComboBoxUF().getSelectedItem().toString());
 					cadastroEstudante.setCursoEstudante(panelAtualizar.getComboBoxCursoEst().getSelectedIndex());
 					cadastroEstudante.setCursoCoord(panelAtualizar.getComboBoxCursoCoord().getSelectedIndex());
@@ -376,8 +372,7 @@ public class Controle implements ActionListener {
 					Calendar cal = Calendar.getInstance();
 					cadastroEstudante.setDataPreenchimento(cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR));
 					
-//=============> funcao do dao para atualizar
-					
+					dao.atualizar(cadastroEstudante.getCpfEstudante(), cadastroEstudante);
 					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro atualizado com sucesso!");
 					
 				}else {
@@ -395,12 +390,12 @@ public class Controle implements ActionListener {
 				cadastroEstudante = new CadastroEstudante();
 				
 				if(dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText()) == null) {
-					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro nÃ£o encontrado!", "Erro",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro nao encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
 				}else {
 					cadastroEstudante = dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText());
 					
 					flagBtnBuscarAcionado = true;
+					flagBtnLimparFormAcionado = false;
 					
 					panelAtualizar.getFieldNomeCoord().setText(cadastroEstudante.getNomeCoord());
 					panelAtualizar.getFieldNomeResp().setText(cadastroEstudante.getNomeResp());
@@ -504,12 +499,10 @@ public class Controle implements ActionListener {
 			 */
 			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
-				System.out.println("BBB");
 				if(dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText()) == null) {
-					JOptionPane.showMessageDialog(panelBuscar, "Cadastro nÃ£o encontrado!", "Erro",
+					JOptionPane.showMessageDialog(panelBuscar, "Cadastro nao encontrado!", "Erro",
 							JOptionPane.ERROR_MESSAGE);
 				}else {
-					System.out.println("AA");
 					cadastroEstudante = new CadastroEstudante();
 					cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
 					
@@ -651,11 +644,27 @@ public class Controle implements ActionListener {
 	
 	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
 
-		box.addItem("");
+		box.addItem("Selecionar opção");
 		for (int i = 0; i < cursos.size(); i++) {
 			box.addItem(cursos.get(i));
 		}
 
+	}
+	
+	public static void addUFsComboBox(JComboBox<String> box) {
+		String [] UFs = {"Selecionar Opção","Acre","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"};
+		for(int i = 0; i < UFs.length; i++) {
+			box.addItem(UFs[i]);
+		}
+	}
+	
+	public static void addSemestresComboBox(JComboBox<String> box) {
+		
+		box.addItem("Selecionar opção");
+		for(int i = 1; i < 13; i++) {		
+			box.addItem(String.valueOf(i));
+		}
+		
 	}
 
 }
