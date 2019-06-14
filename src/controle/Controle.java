@@ -644,7 +644,7 @@ public class Controle implements ActionListener {
 	
 	public static void addCursosComboBox(JComboBox<String> box, LinkedList<String> cursos) {
 
-		box.addItem("Selecionar opï¿½ï¿½o");
+		box.addItem("Selecionar opção");
 		for (int i = 0; i < cursos.size(); i++) {
 			box.addItem(cursos.get(i));
 		}
@@ -652,7 +652,7 @@ public class Controle implements ActionListener {
 	}
 	
 	public static void addUFsComboBox(JComboBox<String> box) {
-		String [] UFs = {"Selecionar Opï¿½ï¿½o","Acre","Amapï¿½","Amazonas","Bahia","Cearï¿½","Distrito Federal","Espï¿½rito Santo","Goiï¿½s","Maranhï¿½o","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Parï¿½","Paraï¿½ba","Paranï¿½","Pernambuco","Piauï¿½","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondï¿½nia","Roraima","Santa Catarina","Sï¿½o Paulo","Sergipe","Tocantins"};
+		String [] UFs = {"Selecionar opção","Acre","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"};
 		for(int i = 0; i < UFs.length; i++) {
 			box.addItem(UFs[i]);
 		}
@@ -660,7 +660,7 @@ public class Controle implements ActionListener {
 	
 	public static void addSemestresComboBox(JComboBox<String> box) {
 		
-		box.addItem("Selecionar opï¿½ï¿½o");
+		box.addItem("Selecionar opção");
 		for(int i = 1; i < 13; i++) {		
 			box.addItem(String.valueOf(i));
 		}
