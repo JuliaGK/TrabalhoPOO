@@ -387,12 +387,11 @@ public class Controle implements ActionListener {
 			 */
 			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
-				cadastroEstudante = new CadastroEstudante();
+				cadastroEstudante = dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText());
 				
-				if(dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText()) == null) {
+				if(cadastroEstudante == null) {
 					JOptionPane.showMessageDialog(panelAtualizar, "Cadastro nao encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
 				}else {
-					cadastroEstudante = dao.consultarFormulario(panelAtualizar.getFieldCPFBusca().getText());
 					
 					flagBtnBuscarAcionado = true;
 					flagBtnLimparFormAcionado = false;
@@ -429,7 +428,6 @@ public class Controle implements ActionListener {
 					panelAtualizar.getComboBoxUF().setSelectedItem(cadastroEstudante.getUfEstudante());
 					panelAtualizar.getComboBoxCursoEst().setSelectedIndex(cadastroEstudante.getCursoEstudante());
 					panelAtualizar.getComboBoxCursoCoord().setSelectedIndex(cadastroEstudante.getCursoCoord());
-					
 					panelAtualizar.getTextArea().setText(cadastroEstudante.getAtividadesEstagio());
 				}
 			}
@@ -497,15 +495,16 @@ public class Controle implements ActionListener {
 			/**
 			 * Acao do botao Buscar
 			 */
-			
 			if(e.getActionCommand().equalsIgnoreCase("Buscar")) {
-				if(dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText()) == null) {
+				
+				cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
+				//System.out.println(cadastroEstudante.getRgCoord());
+				//System.out.println(cadastroEstudante.getRgResp());
+				
+				if(cadastroEstudante == null) {
 					JOptionPane.showMessageDialog(panelBuscar, "Cadastro nao encontrado!", "Erro",
 							JOptionPane.ERROR_MESSAGE);
 				}else {
-					cadastroEstudante = new CadastroEstudante();
-					cadastroEstudante = dao.consultarFormulario(panelBuscar.getFieldCPFBusca().getText());
-					
 					panelBuscar.getFieldNomeCoord().setText(cadastroEstudante.getNomeCoord());
 					panelBuscar.getFieldNomeResp().setText(cadastroEstudante.getNomeResp());
 					panelBuscar.getFieldNomeEst().setText(cadastroEstudante.getNomeEstudante());

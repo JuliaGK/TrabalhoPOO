@@ -63,7 +63,6 @@ public class Dao {
 			prep.setString(35, form.getDataPreenchimento());
 			
 			prep.executeUpdate();
-			System.out.println("Cadastro efetuado");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -190,7 +189,8 @@ public class Dao {
 				e.printStackTrace();
 			}
 		}
-		
+		System.out.println(form.getRgCoord().length());
+		System.out.println(form.getRgResp().length());
 		return form;
 	}
 	
@@ -309,10 +309,90 @@ public class Dao {
 	
 	public boolean atualizar(String cpfAluno, CadastroEstudante novoFormulario) {
 		
+		Connection con = ConexaoMySQL.getConexao();
+		String sql = null;
 		if(consultarFormulario(cpfAluno)!=null) {
-			
-			excluirFormulario(cpfAluno);
-			registrarFormulario(novoFormulario);
+			sql = "UPDATE formularios SET nomeProfessorFormulario = ?"
+			+ ", SET idCursoCoordenador = ?"
+			+ ", SET rgProfessorFormulario = ?"
+			+ ", SET cpfProfessorFormulario = ?" 
+			+ ", SET cargoResponsavelFormulario = ?"
+			+ ", SET nomeResponsavelFormulario = ?"
+			+ ", SET rgResponsavelFormulario = ?"
+			+ ", SET cpfResponsavelFormulario = ?"
+			+ ", SET nomeEstudanteFormulario = ?"
+			+ ", SET nascimentoEstudanteFormulario = ?"
+			+ ", SET rgEstudanteFormulario = ?"
+			+ ", SET logradouroEstudanteFormulario = ?" 
+			+ ", SET enderecoEstudanteFormulario = ?" 
+			+ ", SET complementoEstudanteFormulario = ?" 
+			+ ", SET bairroEstudanteFormulario = ?" 
+			+ ", SET cepEstudanteFormulario = ?" 
+			+ ", SET cidadeEstudanteFormulario = ?" 
+			+ ", SET ufEstudanteFormulario = ?" 
+			+ ", SET idCursoEstudante = ?" 
+			+ ", SET matriculaEstudanteFormulario = ?" 
+			+ ", SET semestreEstudanteFormulario = ?" 
+			+ ", SET areaEstagioFormulario = ?"
+			+ ", SET tempoEstagioFormulario = ?" 
+			+ ", SET inicioEstagioFormulario = ?"
+			+ ", SET finalEstagioFormulario = ?" 
+			+ ", SET cargaHorarioEstagioFormulario = ?"
+			+ ", SET numeroApoliceEstagioFormulario = ?"
+			+ ", SET seguradorEstagioFormulario = ?" 
+			+ ", SET supervisaoEstagioFormulario = ?"
+			+ ", SET siapSupervisorFormulario = ?"
+			+ ", SET orientadorEstagioFormulario = ?"
+			+ ", SET cargoOrientadorEstagioFormulario = ?"
+			+ ", SET atividadesEstagioFormulario = ?"
+			+ ", SET dataPreenchimentoFormulario = ?"
+			+ " WHERE cpfEstudanteFormulario = ?;";
+
+			try {
+				PreparedStatement prep = con.prepareStatement(sql);
+				prep.setString(1,novoFormulario.getNomeCoord());
+				prep.setInt(2,novoFormulario.getCursoCoord());
+				prep.setString(3,novoFormulario.getRgCoord());
+				prep.setString(4, novoFormulario.getCpfCoord());
+				prep.setString(5,novoFormulario.getCargoResp());
+				prep.setString(6,novoFormulario.getNomeResp());
+				prep.setString(7,novoFormulario.getRgResp());
+				prep.setString(8, novoFormulario.getCpfResp());
+				prep.setString(9, novoFormulario.getNomeEstudante());
+				prep.setString(10, novoFormulario.getDataNascEstudante());
+				prep.setString(11, novoFormulario.getRgEstudante());
+				prep.setString(12, novoFormulario.getLogradEstudante());
+				prep.setString(13, novoFormulario.getEnderecoEtudante());
+				prep.setString(14, novoFormulario.getComplemEstudante());
+				prep.setString(15, novoFormulario.getBairroEstudante());
+				prep.setString(16, novoFormulario.getCepEstudante());
+				prep.setString(17, novoFormulario.getCidadeEstudante());
+				prep.setString(18, novoFormulario.getUfEstudante());
+				prep.setInt(19, novoFormulario.getCursoEstudante());
+				prep.setString(20, novoFormulario.getMatricEstudante());
+				prep.setInt(21, novoFormulario.getSemestEstudante());
+				prep.setString(22, novoFormulario.getAreaAtuacaoEstagio());
+				prep.setString(23, novoFormulario.getDuracaoEstagio());
+				prep.setString(24, novoFormulario.getDataInicialEstagio());
+				prep.setString(25, novoFormulario.getDataFinalEstagio());
+				prep.setString(26, novoFormulario.getCargaHorariaEstagio());
+				prep.setString(27, novoFormulario.getNumApoliceSeguroEstagio());
+				prep.setString(28, novoFormulario.getSeguradoraEstagio());
+				prep.setString(29, novoFormulario.getSupervEstagio());
+				prep.setString(30, novoFormulario.getNumSiapeEstagio());
+				prep.setString(31, novoFormulario.getOrientadorEstagio());
+				prep.setString(32, novoFormulario.getCargoSupervEstagio());
+				prep.setString(33, novoFormulario.getAtividadesEstagio());
+				prep.setString(34, novoFormulario.getDataPreenchimento());
+				prep.setString(35, cpfAluno);
+				System.out.println(prep.toString());
+				prep.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
 			
 			return true;
 			
