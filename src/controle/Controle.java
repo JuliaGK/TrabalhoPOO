@@ -190,7 +190,7 @@ public class Controle implements ActionListener {
 			if (e.getActionCommand().equals("Excluir  Formul\u00E1rio")) {
 				// Da acesso ao panel para excluir
 				framePrincipal.setContentPane(panelExcluir);
-				framePrincipal.setSize(360, 180);
+				framePrincipal.setSize(500, 150);
 				framePrincipal.setLocationRelativeTo(null);
 
 			}
@@ -240,7 +240,6 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldMatEst().setText("");
 				panelNovo.getFieldCPFCoord().setText("");
 				panelNovo.getFieldRGCoord().setText("");
-				panelNovo.getFieldCPFBusca().setText("");
 				panelNovo.getTextArea().setText("");
 			}
 			
@@ -266,13 +265,18 @@ public class Controle implements ActionListener {
 				panelNovo.getFieldNascEst().getText().isEmpty() || panelNovo.getFieldCPFResp().getText().isEmpty() ||
 				panelNovo.getFieldRGResp().getText().isEmpty() || panelNovo.getFieldMatEst().getText().isEmpty() ||
 				panelNovo.getFieldCPFCoord().getText().isEmpty() || panelNovo.getFieldRGCoord().getText().isEmpty() ||
-				panelNovo.getFieldCPFBusca().getText().isEmpty() || panelNovo.getTextArea().getText().isEmpty()) {
+				panelNovo.getTextArea().getText().isEmpty()) {
 					
 					JOptionPane.showMessageDialog(panelAtualizar, 
-							"Falha ao cadastrar! Todos os campos são obrigatórios.", "Erro",
+							"Falha ao cadastrar! Todos os campos sao obrigatorios.", "Erro",
 							JOptionPane.ERROR_MESSAGE);
 					
-				}else {
+				} else if( !(panelNovo.getFieldRGCoord().getText().matches("[0-9]+")) || !( panelNovo.getFieldRGEst().getText().matches("[0-9]+") ) || !(panelNovo.getFieldRGResp().getText().matches("[0-9]+"))) {
+					JOptionPane.showMessageDialog(panelAtualizar, 
+							"Falha ao cadastrar! RG invalido.", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				else {
 					cadastroEstudante = new CadastroEstudante();
 					cadastroEstudante.setNomeCoord(panelNovo.getFieldNomeCoord().getText());
 					cadastroEstudante.setNomeResp(panelNovo.getFieldNomeResp().getText());

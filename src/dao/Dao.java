@@ -189,8 +189,6 @@ public class Dao {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(form.getRgCoord().length());
-		System.out.println(form.getRgResp().length());
 		return form;
 	}
 	
@@ -313,39 +311,39 @@ public class Dao {
 		String sql = null;
 		if(consultarFormulario(cpfAluno)!=null) {
 			sql = "UPDATE formularios SET nomeProfessorFormulario = ?"
-			+ ", SET idCursoCoordenador = ?"
-			+ ", SET rgProfessorFormulario = ?"
-			+ ", SET cpfProfessorFormulario = ?" 
-			+ ", SET cargoResponsavelFormulario = ?"
-			+ ", SET nomeResponsavelFormulario = ?"
-			+ ", SET rgResponsavelFormulario = ?"
-			+ ", SET cpfResponsavelFormulario = ?"
-			+ ", SET nomeEstudanteFormulario = ?"
-			+ ", SET nascimentoEstudanteFormulario = ?"
-			+ ", SET rgEstudanteFormulario = ?"
-			+ ", SET logradouroEstudanteFormulario = ?" 
-			+ ", SET enderecoEstudanteFormulario = ?" 
-			+ ", SET complementoEstudanteFormulario = ?" 
-			+ ", SET bairroEstudanteFormulario = ?" 
-			+ ", SET cepEstudanteFormulario = ?" 
-			+ ", SET cidadeEstudanteFormulario = ?" 
-			+ ", SET ufEstudanteFormulario = ?" 
-			+ ", SET idCursoEstudante = ?" 
-			+ ", SET matriculaEstudanteFormulario = ?" 
-			+ ", SET semestreEstudanteFormulario = ?" 
-			+ ", SET areaEstagioFormulario = ?"
-			+ ", SET tempoEstagioFormulario = ?" 
-			+ ", SET inicioEstagioFormulario = ?"
-			+ ", SET finalEstagioFormulario = ?" 
-			+ ", SET cargaHorarioEstagioFormulario = ?"
-			+ ", SET numeroApoliceEstagioFormulario = ?"
-			+ ", SET seguradorEstagioFormulario = ?" 
-			+ ", SET supervisaoEstagioFormulario = ?"
-			+ ", SET siapSupervisorFormulario = ?"
-			+ ", SET orientadorEstagioFormulario = ?"
-			+ ", SET cargoOrientadorEstagioFormulario = ?"
-			+ ", SET atividadesEstagioFormulario = ?"
-			+ ", SET dataPreenchimentoFormulario = ?"
+			+ ", idCursoCoordenador = ?"
+			+ ", rgProfessorFormulario = ?"
+			+ ", cpfProfessorFormulario = ?" 
+			+ ", cargoResponsavelFormulario = ?"
+			+ ", nomeResponsavelFormulario = ?"
+			+ ", rgResponsavelFormulario = ?"
+			+ ", cpfResponsavelFormulario = ?"
+			+ ", nomeEstudanteFormulario = ?"
+			+ ", nascimentoEstudanteFormulario = ?"
+			+ ", rgEstudanteFormulario = ?"
+			+ ", logradouroEstudanteFormulario = ?" 
+			+ ", enderecoEstudanteFormulario = ?" 
+			+ ", complementoEstudanteFormulario = ?" 
+			+ ", bairroEstudanteFormulario = ?" 
+			+ ", cepEstudanteFormulario = ?" 
+			+ ", cidadeEstudanteFormulario = ?" 
+			+ ", ufEstudanteFormulario = ?" 
+			+ ", idCursoEstudante = ?" 
+			+ ", matriculaEstudanteFormulario = ?" 
+			+ ", semestreEstudanteFormulario = ?" 
+			+ ", areaEstagioFormulario = ?"
+			+ ", tempoEstagioFormulario = ?" 
+			+ ", inicioEstagioFormulario = ?"
+			+ ", finalEstagioFormulario = ?" 
+			+ ", cargaHorarioEstagioFormulario = ?"
+			+ ", numeroApoliceEstagioFormulario = ?"
+			+ ", seguradorEstagioFormulario = ?" 
+			+ ", supervisaoEstagioFormulario = ?"
+			+ ", siapSupervisorFormulario = ?"
+			+ ", orientadorEstagioFormulario = ?"
+			+ ", cargoOrientadorEstagioFormulario = ?"
+			+ ", atividadesEstagioFormulario = ?"
+			+ ", dataPreenchimentoFormulario = ?"
 			+ " WHERE cpfEstudanteFormulario = ?;";
 
 			try {
@@ -385,10 +383,9 @@ public class Dao {
 				prep.setString(33, novoFormulario.getAtividadesEstagio());
 				prep.setString(34, novoFormulario.getDataPreenchimento());
 				prep.setString(35, cpfAluno);
-				System.out.println(prep.toString());
 				prep.executeUpdate();
 				
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return false;

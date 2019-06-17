@@ -61,13 +61,13 @@ public class PanelBuscar extends JPanel {
 	private JComboBox comboBoxUF;
 	private JFormattedTextField FieldCEP;
 	private JFormattedTextField FieldCPFEst;
-	private JFormattedTextField FieldRGEst;
+	private JTextField FieldRGEst;
 	private JFormattedTextField FieldNascEst;
 	private JFormattedTextField FieldCPFResp;
-	private JFormattedTextField FieldRGResp;
+	private JTextField FieldRGResp;
 	private JComboBox<String> comboBoxCursoCoord;
 	private JFormattedTextField FieldCPFCoord;
-	private JFormattedTextField FieldRGCoord;
+	private JTextField FieldRGCoord;
 	private JButton btnBuscar;
 	private JFormattedTextField FieldCPFBusca;
 	private MaskFormatter dataIni;
@@ -136,7 +136,7 @@ public class PanelBuscar extends JPanel {
 		JLabel lblRgCoordenadora = new JLabel("RG Coordenador(a)");
 		lblRgCoordenadora.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRgCoordenadora, "flowx,cell 3 14");
-		FieldRGCoord = new JFormattedTextField(RGCoord);
+		FieldRGCoord = new JTextField();
 		add(FieldRGCoord, "cell 4 14,growx");
 
 		JLabel lblCpfCoordenadora = new JLabel("CPF Coordenador(a)");
@@ -165,13 +165,6 @@ public class PanelBuscar extends JPanel {
 		FieldNomeResp.setColumns(10);
 
 		try {
-			RGResp = new MaskFormatter("##########");
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try {
 			CPFResp = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -181,7 +174,7 @@ public class PanelBuscar extends JPanel {
 		JLabel lblRGResp = new JLabel("RG Respons\u00E1vel");
 		lblRGResp.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRGResp, "cell 3 18");
-		FieldRGResp = new JFormattedTextField(RGResp);
+		FieldRGResp = new JTextField();
 		add(FieldRGResp, "cell 4 18,growx");
 
 		JLabel lblCPFResp = new JLabel("CPF Respons\u00E1vel");
@@ -240,7 +233,7 @@ public class PanelBuscar extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FieldRGEst = new JFormattedTextField(RGEst);
+		FieldRGEst = new JTextField();
 		add(FieldRGEst, "cell 1 23,growx");
 
 		JLabel lblCpfEstudante = new JLabel("CPF Estudante");
@@ -792,7 +785,7 @@ public class PanelBuscar extends JPanel {
 		FieldCPFEst = fieldCPFEst;
 	}
 
-	public JFormattedTextField getFieldRGEst() {
+	public JTextField getFieldRGEst() {
 		return FieldRGEst;
 	}
 
@@ -816,7 +809,7 @@ public class PanelBuscar extends JPanel {
 		FieldCPFResp = fieldCPFResp;
 	}
 
-	public JFormattedTextField getFieldRGResp() {
+	public JTextField getFieldRGResp() {
 		return FieldRGResp;
 	}
 
@@ -840,7 +833,7 @@ public class PanelBuscar extends JPanel {
 		FieldCPFCoord = fieldCPFCoord;
 	}
 
-	public JFormattedTextField getFieldRGCoord() {
+	public JTextField getFieldRGCoord() {
 		return FieldRGCoord;
 	}
 

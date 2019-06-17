@@ -2,6 +2,7 @@ package visao;
 
 import javax.swing.JPanel;
 import java.awt.SystemColor;
+import java.text.NumberFormat;
 import java.text.ParseException;
 
 import net.miginfocom.swing.MigLayout;
@@ -66,7 +67,6 @@ public class PanelNovoF extends JPanel {
 	private JFormattedTextField FieldCPFCoord;
 	private JFormattedTextField FieldRGCoord;
 	private JButton btnCadastrar;
-	private JFormattedTextField FieldCPFBusca;
 	private MaskFormatter dataIni;
 	private MaskFormatter dataFinal;
 	private JButton btnVoltarMenu;
@@ -114,7 +114,7 @@ public class PanelNovoF extends JPanel {
 		JLabel lblRgCoordenadora = new JLabel("RG Coordenador(a)");
 		lblRgCoordenadora.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRgCoordenadora, "flowx,cell 5 4");
-		FieldRGCoord = new JFormattedTextField(RGCoord);
+		FieldRGCoord = new JFormattedTextField();
 		add(FieldRGCoord, "cell 6 4,growx");
 
 		JLabel lblCpfCoordenadora = new JLabel("CPF Coordenador(a)");
@@ -159,7 +159,7 @@ public class PanelNovoF extends JPanel {
 		JLabel lblRGResp = new JLabel("RG Respons\u00E1vel");
 		lblRGResp.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRGResp, "cell 5 8");
-		FieldRGResp = new JFormattedTextField(RGResp);
+		FieldRGResp = new JFormattedTextField();
 		add(FieldRGResp, "cell 6 8,growx");
 
 		JLabel lblCPFResp = new JLabel("CPF Respons\u00E1vel");
@@ -218,7 +218,7 @@ public class PanelNovoF extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FieldRGEst = new JFormattedTextField(RGEst);
+		FieldRGEst = new JFormattedTextField();
 		add(FieldRGEst, "cell 1 13,growx");
 
 		JLabel lblCpfEstudante = new JLabel("CPF Estudante");
@@ -826,14 +826,6 @@ public class PanelNovoF extends JPanel {
 
 	public void setBtnCadastrar(JButton btnCadastrar) {
 		this.btnCadastrar = btnCadastrar;
-	}
-
-	public JFormattedTextField getFieldCPFBusca() {
-		return FieldCPFBusca;
-	}
-
-	public void setFieldCPFBusca(JFormattedTextField fieldCPFBusca) {
-		FieldCPFBusca = fieldCPFBusca;
 	}
 
 	public MaskFormatter getDataIni() {

@@ -2,6 +2,7 @@ package visao;
 
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.text.NumberFormat;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -139,7 +140,7 @@ public class PanelAtualizar extends JPanel {
 		JLabel lblRgCoordenadora = new JLabel("RG Coordenador(a)");
 		lblRgCoordenadora.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRgCoordenadora, "flowx,cell 3 11");
-		FieldRGCoord = new JFormattedTextField(RGCoord);
+		FieldRGCoord = new JFormattedTextField();
 		add(FieldRGCoord, "cell 4 11,growx");
 
 		JLabel lblCpfCoordenadora = new JLabel("CPF Coordenador(a)");
@@ -184,7 +185,7 @@ public class PanelAtualizar extends JPanel {
 		JLabel lblRGResp = new JLabel("RG Respons\u00E1vel");
 		lblRGResp.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(lblRGResp, "cell 3 15");
-		FieldRGResp = new JFormattedTextField(RGResp);
+		FieldRGResp = new JFormattedTextField();
 		add(FieldRGResp, "cell 4 15,growx");
 
 		JLabel lblCPFResp = new JLabel("CPF Respons\u00E1vel");
@@ -237,14 +238,14 @@ public class PanelAtualizar extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		try {
 			RGEst = new MaskFormatter("##########");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		FieldRGEst = new JFormattedTextField(RGEst);
+		FieldRGEst = new JFormattedTextField();
 		add(FieldRGEst, "cell 1 20,growx");
 
 		JLabel lblCpfEstudante = new JLabel("CPF Estudante");
